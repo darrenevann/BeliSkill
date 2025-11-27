@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,111 +8,264 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .gig-item-card {
+            border: 1px solid #f1f5f9;
+            transition: all 0.2s ease;
+            background: white;
+        }
+        .gig-item-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .stat-box {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        .stat-label { font-size: 0.7rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-value { font-weight: 700; color: #334155; font-size: 0.9rem; }
+    </style>
 </head>
-
 <body>
 
     <div class="d-flex">
-        <div class="sidebar d-none d-lg-block">
-            <div class="mb-5 d-flex align-items-center gap-2 px-2">
+        <div class="sidebar d-none d-lg-block position-fixed h-100 start-0 top-0 border-end bg-white" style="width: 260px; z-index: 1000;">
+            <div class="mb-5 d-flex align-items-center gap-2 px-4 py-4">
                 <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
                 <h4 class="fw-bold m-0">BeliSkill</h4>
             </div>
-            <nav class="nav flex-column">
+            <nav class="nav flex-column px-2">
                 <a class="nav-link" href="dashboard.html"><i class="bi bi-grid"></i> Dashboard</a>
                 <a class="nav-link" href="my-orders.html"><i class="bi bi-briefcase"></i> Pesanan</a>
                 <a class="nav-link active" href="my-gigs.html"><i class="bi bi-collection-fill"></i> Gigs Saya</a>
                 <a class="nav-link" href="finance.html"><i class="bi bi-wallet2"></i> Keuangan</a>
                 <a class="nav-link" href="chat.html"><i class="bi bi-chat-dots"></i> Pesan</a>
             </nav>
-            <p class="text-secondary small fw-bold mt-5 mb-3 px-2">GENERAL</p>
-        <nav class="nav flex-column">
-            <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
-        </nav>
+            <div class="mt-4 text-secondary small fw-bold px-3 mb-2">GENERAL</div>
+            <nav class="nav flex-column px-2">
+                <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
+                <a class="nav-link text-danger" href="index.html"><i class="bi bi-box-arrow-right"></i> Keluar</a>
+            </nav>
         </div>
 
-        <div class="main-content w-100 bg-light min-vh-100">
-            <div class="p-4">
+        <div class="main-content w-100 bg-light min-vh-100" style="margin-left: 260px;">
+            
+            <header class="bg-white py-3 px-4 shadow-sm border-bottom sticky-top z-3">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="d-flex align-items-center flex-grow-1" style="max-width: 400px;">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0 ps-3 rounded-start-pill"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control bg-light border-start-0 rounded-end-pill" placeholder="Cari Gig saya...">
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 ms-auto">
+                        <div class="dropdown">
+                            <button class="btn p-0 border-0 d-flex align-items-center gap-3 bg-transparent" type="button" data-bs-toggle="dropdown">
+                                <div class="text-end d-none d-sm-block lh-sm">
+                                    <div class="fw-bold text-dark" style="font-size: 0.9rem;">Budi Santoso</div>
+                                    <small class="text-secondary" style="font-size: 0.75rem;">Freelancer</small>
+                                </div>
+                                <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=2563EB&color=fff" class="rounded-circle border border-2 border-white shadow-sm" width="40">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 mt-2">
+                                <li><a class="dropdown-item" href="profile.html">Profil Publik</a></li>
+                                <li><a class="dropdown-item" href="settings.html">Pengaturan</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="index.html">Keluar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container-fluid px-4 py-4">
+                
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h3 class="fw-bold">Gigs Saya</h3>
-                    <a href="create-gig.html" class="btn btn-primary rounded-pill icon-link fw-bold">
-                        <i class="bi bi-plus-lg"></i> Buat Gig Baru
+                    <div>
+                        <h3 class="fw-bold m-0">Kelola Gigs</h3>
+                        <p class="text-secondary m-0 small">Atur layanan yang Anda tawarkan kepada klien.</p>
+                    </div>
+                    <a href="create-gig.html" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">
+                        <i class="bi bi-plus-lg me-2"></i> Buat Gig Baru
                     </a>
                 </div>
 
-                <div class="card-custom p-0 overflow-hidden">
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="bg-light">
-                                <tr>
-                                    <th class="p-4 text-secondary small fw-bold border-0">GIG</th>
-                                    <th class="p-4 text-secondary small fw-bold border-0 text-center">IMPRESSIONS</th>
-                                    <th class="p-4 text-secondary small fw-bold border-0 text-center">CLICKS</th>
-                                    <th class="p-4 text-secondary small fw-bold border-0 text-center">ORDERS</th>
-                                    <th class="p-4 text-secondary small fw-bold border-0 text-end">AKSI</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="p-4">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <img src="https://placehold.co/100x100/2563EB/fff" class="rounded"
-                                                width="60" height="40" style="object-fit: cover;">
-                                            <span class="fw-bold text-dark small">Jasa Pembuatan Landing Page
-                                                Modern</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-center text-secondary">1.2k</td>
-                                    <td class="text-center text-secondary">450</td>
-                                    <td class="text-center text-secondary">12</td>
-                                    <td class="text-end p-4">
-                                        <div class="dropdown">
-                                            <button class="btn btn-light btn-sm rounded-circle" type="button"
-                                                data-bs-toggle="dropdown">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
-                                                <li><a class="dropdown-item small" href="#">Lihat Gig</a></li>
-                                                <li><a class="dropdown-item small" href="#">Edit</a></li>
-                                                <li><a class="dropdown-item small text-danger" href="#">Hapus</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="p-4">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <img src="https://placehold.co/100x100/1e40af/fff" class="rounded"
-                                                width="60" height="40" style="object-fit: cover;">
-                                            <span class="fw-bold text-dark small">Fix Bug CSS HTML Cepat</span>
-                                        </div>
-                                    </td>
-                                    <td class="text-center text-secondary">800</td>
-                                    <td class="text-center text-secondary">120</td>
-                                    <td class="text-center text-secondary">5</td>
-                                    <td class="text-end p-4">
-                                        <div class="dropdown">
-                                            <button class="btn btn-light btn-sm rounded-circle" type="button"
-                                                data-bs-toggle="dropdown">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
-                                                <li><a class="dropdown-item small" href="#">Lihat Gig</a></li>
-                                                <li><a class="dropdown-item small" href="#">Edit</a></li>
-                                                <li><a class="dropdown-item small text-danger" href="#">Hapus</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="bg-white p-3 rounded-4 border shadow-sm d-flex align-items-center gap-3">
+                            <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-circle"><i class="bi bi-layers fs-4"></i></div>
+                            <div><h5 class="fw-bold m-0">3</h5><small class="text-secondary">Gig Aktif</small></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white p-3 rounded-4 border shadow-sm d-flex align-items-center gap-3">
+                            <div class="bg-success bg-opacity-10 text-success p-3 rounded-circle"><i class="bi bi-eye fs-4"></i></div>
+                            <div><h5 class="fw-bold m-0">1.2k</h5><small class="text-secondary">Total Dilihat</small></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white p-3 rounded-4 border shadow-sm d-flex align-items-center gap-3">
+                            <div class="bg-warning bg-opacity-10 text-warning p-3 rounded-circle"><i class="bi bi-cart-check fs-4"></i></div>
+                            <div><h5 class="fw-bold m-0">17</h5><small class="text-secondary">Total Terjual</small></div>
+                        </div>
                     </div>
                 </div>
+
+                <ul class="nav nav-pills mb-4 gap-2 bg-white p-2 rounded-3 shadow-sm d-inline-flex">
+                    <li class="nav-item"><button class="nav-link active rounded-pill fw-bold px-4">Semua</button></li>
+                    <li class="nav-item"><button class="nav-link text-secondary rounded-pill fw-bold px-4">Aktif <span class="badge bg-success ms-1 rounded-pill">2</span></button></li>
+                    <li class="nav-item"><button class="nav-link text-secondary rounded-pill fw-bold px-4">Draft <span class="badge bg-secondary ms-1 rounded-pill">1</span></button></li>
+                    <li class="nav-item"><button class="nav-link text-secondary rounded-pill fw-bold px-4">Dijeda</button></li>
+                </ul>
+
+                <div class="card gig-item-card rounded-4 mb-3 overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-2">
+                                <img src="https://placehold.co/200x150/2563EB/fff?text=Web+Dev" class="w-100 h-100 object-fit-cover" style="min-height: 120px;">
+                            </div>
+                            
+                            <div class="col-md-4 p-4">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="badge bg-success bg-opacity-10 text-success border border-success px-2 py-1 rounded-pill" style="font-size: 0.65rem;">AKTIF</span>
+                                    <small class="text-secondary">IT & Development</small>
+                                </div>
+                                <h6 class="fw-bold mb-2 text-truncate"><a href="gig-detail.html" class="text-dark text-decoration-none">Jasa Pembuatan Landing Page Modern Responsif</a></h6>
+                                <div class="fw-bold text-primary">Rp 1.500.000</div>
+                            </div>
+
+                            <div class="col-md-4 p-4 border-start border-end">
+                                <div class="d-flex justify-content-around">
+                                    <div class="stat-box">
+                                        <div class="stat-label">IMPRESSIONS</div>
+                                        <div class="stat-value text-primary">1.2k</div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <div class="stat-label">CLICKS</div>
+                                        <div class="stat-value text-info">450</div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <div class="stat-label">ORDERS</div>
+                                        <div class="stat-value text-success">12</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 p-4 text-center">
+                                <div class="dropdown">
+                                    <button class="btn btn-light border rounded-pill px-3 fw-bold btn-sm w-100" type="button" data-bs-toggle="dropdown">
+                                        Kelola <i class="bi bi-chevron-down ms-1"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+                                        <li><a class="dropdown-item small" href="gig-detail.html"><i class="bi bi-eye me-2"></i> Lihat Gig</a></li>
+                                        <li><a class="dropdown-item small" href="create-gig.html"><i class="bi bi-pencil me-2"></i> Edit</a></li>
+                                        <li><a class="dropdown-item small" href="#"><i class="bi bi-pause-circle me-2"></i> Jeda Gig</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item small text-danger" href="#"><i class="bi bi-trash me-2"></i> Hapus</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card gig-item-card rounded-4 mb-3 overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-2">
+                                <img src="https://placehold.co/200x150/1e40af/fff?text=Bug+Fix" class="w-100 h-100 object-fit-cover" style="min-height: 120px;">
+                            </div>
+                            <div class="col-md-4 p-4">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="badge bg-success bg-opacity-10 text-success border border-success px-2 py-1 rounded-pill" style="font-size: 0.65rem;">AKTIF</span>
+                                    <small class="text-secondary">Programming</small>
+                                </div>
+                                <h6 class="fw-bold mb-2 text-truncate"><a href="#" class="text-dark text-decoration-none">Fix Bug HTML CSS & JavaScript Cepat</a></h6>
+                                <div class="fw-bold text-primary">Rp 100.000</div>
+                            </div>
+                            <div class="col-md-4 p-4 border-start border-end">
+                                <div class="d-flex justify-content-around">
+                                    <div class="stat-box">
+                                        <div class="stat-label">IMPRESSIONS</div>
+                                        <div class="stat-value text-primary">800</div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <div class="stat-label">CLICKS</div>
+                                        <div class="stat-value text-info">120</div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <div class="stat-label">ORDERS</div>
+                                        <div class="stat-value text-success">5</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 p-4 text-center">
+                                <div class="dropdown">
+                                    <button class="btn btn-light border rounded-pill px-3 fw-bold btn-sm w-100" type="button" data-bs-toggle="dropdown">
+                                        Kelola <i class="bi bi-chevron-down ms-1"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+                                        <li><a class="dropdown-item small" href="#"><i class="bi bi-eye me-2"></i> Lihat Gig</a></li>
+                                        <li><a class="dropdown-item small" href="#"><i class="bi bi-pencil me-2"></i> Edit</a></li>
+                                        <li><a class="dropdown-item small text-danger" href="#"><i class="bi bi-trash me-2"></i> Hapus</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card gig-item-card rounded-4 mb-3 overflow-hidden bg-light opacity-75">
+                    <div class="card-body p-0">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-2">
+                                <img src="https://placehold.co/200x150/94a3b8/fff?text=Draft" class="w-100 h-100 object-fit-cover grayscale" style="min-height: 120px;">
+                            </div>
+                            <div class="col-md-4 p-4">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="badge bg-secondary text-white px-2 py-1 rounded-pill" style="font-size: 0.65rem;">DRAFT</span>
+                                    <small class="text-secondary">Graphic Design</small>
+                                </div>
+                                <h6 class="fw-bold mb-2 text-truncate text-secondary">Jasa Desain UI/UX Aplikasi Mobile</h6>
+                                <div class="fw-bold text-secondary">Rp 2.500.000</div>
+                            </div>
+                            <div class="col-md-4 p-4 border-start border-end">
+                                <div class="d-flex justify-content-center align-items-center h-100">
+                                    <span class="text-secondary small fst-italic"><i class="bi bi-info-circle me-1"></i> Belum diterbitkan</span>
+                                </div>
+                            </div>
+                            <div class="col-md-2 p-4 text-center">
+                                <a href="create-gig.html" class="btn btn-primary rounded-pill px-3 fw-bold btn-sm w-100">
+                                    Lanjut Edit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="mobile-nav.js"></script>
+    <script>
+        // Simple Tab Interaction
+        const navLinks = document.querySelectorAll('.nav-pills .nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => {
+                    l.classList.remove('active', 'bg-primary');
+                    l.classList.add('text-secondary', 'bg-white');
+                });
+                this.classList.add('active', 'bg-primary');
+                this.classList.remove('text-secondary', 'bg-white');
+            });
+        });
+    </script>
 </body>
-
 </html>
+```

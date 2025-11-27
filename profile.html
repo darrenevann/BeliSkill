@@ -6,128 +6,270 @@
     <title>Profil Budi Santoso - BeliSkill</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Profile Specific Styles */
+        .profile-cover {
+            height: 200px;
+            background: linear-gradient(120deg, #2563EB, #60a5fa);
+            border-radius: 0 0 24px 24px;
+            position: relative;
+        }
+        .profile-avatar-container {
+            margin-top: -80px;
+            position: relative;
+            display: inline-block;
+        }
+        .profile-avatar {
+            width: 160px; height: 160px;
+            border: 5px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+        .online-badge {
+            width: 24px; height: 24px;
+            background: #10b981;
+            border: 3px solid white;
+            position: absolute;
+            bottom: 10px; right: 10px;
+            border-radius: 50%;
+        }
+        .stat-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #f1f5f9;
+        }
+        .card-gig {
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s;
+        }
+        .card-gig:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3 fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-primary" href="index.html"><i class="bi bi-rocket-takeoff-fill"></i> BeliSkill</a>
-            <div class="d-flex gap-2">
-                <a href="dashboard.html" class="btn btn-outline-secondary rounded-pill px-4">Kembali ke Dashboard</a>
+    <div class="d-flex">
+        <div class="sidebar d-none d-lg-block position-fixed h-100 start-0 top-0 border-end bg-white" style="width: 260px; z-index: 1000;">
+            <div class="mb-5 d-flex align-items-center gap-2 px-4 py-4">
+                <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
+                <h4 class="fw-bold m-0">BeliSkill</h4>
             </div>
+            <nav class="nav flex-column px-2">
+                <a class="nav-link" href="dashboard.html"><i class="bi bi-grid"></i> Dashboard</a>
+                <a class="nav-link" href="my-orders.html"><i class="bi bi-briefcase"></i> Pesanan</a>
+                <a class="nav-link" href="my-gigs.html"><i class="bi bi-collection"></i> Gigs Saya</a>
+                <a class="nav-link" href="finance.html"><i class="bi bi-wallet2"></i> Keuangan</a>
+                <a class="nav-link" href="chat.html"><i class="bi bi-chat-dots"></i> Pesan</a>
+            </nav>
+            <div class="mt-4 text-secondary small fw-bold px-3 mb-2">AKUN</div>
+            <nav class="nav flex-column px-2">
+                <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
+                <a class="nav-link text-danger" href="index.html"><i class="bi bi-box-arrow-right"></i> Keluar</a>
+            </nav>
         </div>
-    </nav>
 
-    <div class="container" style="margin-top: 100px; padding-bottom: 50px;">
-        <div class="row g-5">
+        <div class="main-content w-100 bg-light min-vh-100" style="margin-left: 260px;">
             
-            <div class="col-lg-4">
-                <div class="card-custom p-4 text-center mb-4">
-                    <div class="position-relative d-inline-block mb-3">
-                        <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=random&size=200" class="rounded-circle border border-4 border-white shadow" width="120" height="120">
-                        <span class="position-absolute bottom-0 end-0 bg-success border border-white rounded-circle p-2" title="Online"></span>
-                    </div>
-                    <h5 class="fw-bold mb-1">Budi Santoso</h5>
-                    <a href="client-dashboard.html" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">Client</a>
-                    <a href="dashboard.html" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">Freelancer</a>
-                    <p class="text-secondary small mb-3">Web Developer & UI Designer</p>
-                    
-                    <div class="d-flex justify-content-center gap-1 text-warning mb-4">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <span class="text-secondary small ms-2">(42 Review)</span>
-                    </div>
-
-                    <button class="btn btn-outline-primary w-100 fw-bold rounded-pill mb-3">Hubungi Saya</button>
-                    
-                    <div class="border-top pt-4 text-start">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span class="text-secondary small"><i class="bi bi-geo-alt me-2"></i>Lokasi</span>
-                            <span class="fw-bold small">Jakarta, ID</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span class="text-secondary small"><i class="bi bi-person-check me-2"></i>Member sejak</span>
-                            <span class="fw-bold small">Nov 2023</span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="text-secondary small"><i class="bi bi-clock-history me-2"></i>Respon Terakhir</span>
-                            <span class="fw-bold small">1 Jam lalu</span>
-                        </div>
-                    </div>
+            <div class="bg-white shadow-sm pb-4 mb-4">
+                <div class="profile-cover">
+                    <button class="btn btn-light btn-sm position-absolute top-0 end-0 m-3 shadow-sm opacity-75"><i class="bi bi-camera"></i> Ganti Sampul</button>
                 </div>
+                
+                <div class="container px-4">
+                    <div class="row">
+                        <div class="col-lg-3 text-center text-lg-start">
+                            <div class="profile-avatar-container mb-3">
+                                <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=2563EB&color=fff&size=256" class="rounded-circle profile-avatar">
+                                <div class="online-badge" title="Sedang Online"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-9 pt-3">
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <h2 class="fw-bold m-0">Budi Santoso</h2>
+                                        <i class="bi bi-patch-check-fill text-primary fs-5" title="Terverifikasi"></i>
+                                    </div>
+                                    <p class="text-secondary mb-1">Professional Web Developer & UI Designer</p>
+                                    <div class="d-flex gap-3 small text-secondary">
+                                        <span><i class="bi bi-geo-alt me-1"></i> Jakarta, Indonesia</span>
+                                        <span><i class="bi bi-calendar3 me-1"></i> Gabung Nov 2023</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-2 mt-3 mt-md-0">
+                                    <a href="settings.html" class="btn btn-outline-secondary rounded-pill fw-bold px-4">Edit Profil</a>
+                                    <button class="btn btn-primary rounded-pill fw-bold px-4">Lihat Sebagai Klien</button>
+                                </div>
+                            </div>
 
-                <div class="card-custom p-4">
-                    <h6 class="fw-bold mb-3">Deskripsi</h6>
-                    <p class="text-secondary small lh-lg mb-4">
-                        Saya adalah full-stack developer dengan pengalaman 5 tahun menangani klien UMKM hingga korporat. Spesialisasi di Landing Page dan Dashboard UI.
-                    </p>
-
-                    <h6 class="fw-bold mb-3">Keahlian</h6>
-                    <div class="d-flex flex-wrap gap-2">
-                        <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">HTML5</span>
-                        <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">CSS3</span>
-                        <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">PHP Native</span>
-                        <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">Bootstrap</span>
-                        <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">Figma</span>
+                            <div class="row g-3">
+                                <div class="col-4 col-md-3">
+                                    <div class="stat-box">
+                                        <div class="fw-bold text-dark h5 m-0">5.0</div>
+                                        <div class="small text-secondary"><i class="bi bi-star-fill text-warning"></i> Rating</div>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3">
+                                    <div class="stat-box">
+                                        <div class="fw-bold text-dark h5 m-0">98%</div>
+                                        <div class="small text-secondary"><i class="bi bi-check-circle"></i> Sukses</div>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3">
+                                    <div class="stat-box">
+                                        <div class="fw-bold text-dark h5 m-0">1 Jam</div>
+                                        <div class="small text-secondary"><i class="bi bi-lightning"></i> Respon</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-8">
-                <h4 class="fw-bold mb-4">Gigs dari Budi</h4>
-                
+            <div class="container px-4 pb-5">
                 <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="card-custom h-100 border p-0 overflow-hidden">
-                            <img src="https://placehold.co/600x400/2563EB/fff?text=Web+Design" class="w-100 object-fit-cover" style="height: 180px;">
-                            <div class="p-3">
-                                <h6 class="fw-bold mb-3 lh-base"><a href="gig-detail.html" class="text-dark text-decoration-none">Saya akan membuat website company profile responsif</a></h6>
-                                <div class="d-flex justify-content-between align-items-center pt-2 border-top">
-                                    <small class="text-secondary">Mulai dari</small>
-                                    <span class="fw-bold text-primary">Rp 1.500.000</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     
-                    <div class="col-md-6">
-                        <div class="card-custom h-100 border p-0 overflow-hidden">
-                            <img src="https://placehold.co/600x400/1e40af/fff?text=Fix+Bug" class="w-100 object-fit-cover" style="height: 180px;">
-                            <div class="p-3">
-                                <h6 class="fw-bold mb-3 lh-base"><a href="gig-detail.html" class="text-dark text-decoration-none">Perbaikan bug HTML CSS cepat dalam 1 jam</a></h6>
-                                <div class="d-flex justify-content-between align-items-center pt-2 border-top">
-                                    <small class="text-secondary">Mulai dari</small>
-                                    <span class="fw-bold text-primary">Rp 100.000</span>
+                    <div class="col-lg-4">
+                        <div class="card-custom p-4 mb-4 border shadow-sm">
+                            <h6 class="fw-bold mb-3">Tentang Saya</h6>
+                            <p class="text-secondary small lh-lg mb-0">
+                                Saya adalah Full-stack Developer dengan pengalaman 5+ tahun menangani berbagai proyek mulai dari Landing Page UMKM hingga Sistem Korporat. Spesialisasi saya adalah menciptakan website yang tidak hanya indah secara visual (UI) tapi juga mudah digunakan (UX) dan cepat.
+                            </p>
+                            <hr class="my-4 opacity-25">
+                            
+                            <h6 class="fw-bold mb-3">Bahasa</h6>
+                            <ul class="list-unstyled small text-secondary mb-0">
+                                <li class="mb-2 d-flex justify-content-between">Indonesia <span class="text-dark fw-bold">Native</span></li>
+                                <li class="d-flex justify-content-between">Inggris <span class="text-dark fw-bold">Fluent</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="card-custom p-4 mb-4 border shadow-sm">
+                            <h6 class="fw-bold mb-3">Keahlian & Tools</h6>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">HTML5 & CSS3</span>
+                                <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">JavaScript</span>
+                                <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">React JS</span>
+                                <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">PHP Laravel</span>
+                                <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">Figma</span>
+                                <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">MySQL</span>
+                            </div>
+                        </div>
+
+                        <div class="card-custom p-4 border shadow-sm">
+                            <h6 class="fw-bold mb-3">Sertifikasi</h6>
+                            <div class="d-flex gap-3 mb-3">
+                                <div class="bg-warning bg-opacity-10 p-2 rounded text-warning h-100"><i class="bi bi-trophy-fill"></i></div>
+                                <div>
+                                    <h6 class="fw-bold m-0 small">Google UX Design</h6>
+                                    <small class="text-secondary" style="font-size: 0.7rem;">Google • 2023</small>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <div class="bg-primary bg-opacity-10 p-2 rounded text-primary h-100"><i class="bi bi-patch-check-fill"></i></div>
+                                <div>
+                                    <h6 class="fw-bold m-0 small">AWS Certified Developer</h6>
+                                    <small class="text-secondary" style="font-size: 0.7rem;">Amazon • 2022</small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="mt-5">
-                    <h5 class="fw-bold mb-4">Ulasan Pembeli (42)</h5>
-                    <div class="card-custom p-4 mb-3">
-                        <div class="d-flex gap-3">
-                            <div class="bg-light rounded-circle p-2 d-flex align-items-center justify-content-center" style="width:40px;height:40px">
-                                <span class="fw-bold text-secondary">A</span>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold m-0">Andi Wijaya</h6>
-                                <div class="text-warning small mb-1">
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    <div class="col-lg-8">
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="fw-bold m-0">Gig Saya (3)</h5>
+                            <a href="create-gig.html" class="btn btn-sm btn-primary rounded-pill px-3 fw-bold"><i class="bi bi-plus-lg"></i> Tambah</a>
+                        </div>
+
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6">
+                                <div class="card card-gig h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                    <div class="position-relative">
+                                        <img src="https://placehold.co/400x250/2563EB/fff?text=Web+Dev" class="w-100 object-fit-cover" style="height: 180px;">
+                                    </div>
+                                    <div class="p-3 d-flex flex-column h-100">
+                                        <h6 class="fw-bold mb-3 lh-base"><a href="gig-detail.html" class="text-dark text-decoration-none hover:text-primary">Jasa Pembuatan Landing Page Modern Responsif</a></h6>
+                                        <div class="mt-auto d-flex justify-content-between align-items-center pt-3 border-top">
+                                            <span class="small fw-bold text-dark"><i class="bi bi-star-fill text-warning"></i> 5.0 <span class="text-secondary fw-normal">(42)</span></span>
+                                            <span class="fw-bold text-primary">Rp 1.500.000</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="text-secondary small m-0">"Hasil sangat memuaskan, komunikasi lancar. Recommended freelancer!"</p>
-                                <small class="text-secondary opacity-50" style="font-size: 0.7rem;">2 Hari yang lalu</small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card card-gig h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                    <div class="position-relative">
+                                        <img src="https://placehold.co/400x250/1e40af/fff?text=Bug+Fix" class="w-100 object-fit-cover" style="height: 180px;">
+                                    </div>
+                                    <div class="p-3 d-flex flex-column h-100">
+                                        <h6 class="fw-bold mb-3 lh-base"><a href="gig-detail.html" class="text-dark text-decoration-none hover:text-primary">Fix Bug HTML CSS & JavaScript Cepat 1 Jam</a></h6>
+                                        <div class="mt-auto d-flex justify-content-between align-items-center pt-3 border-top">
+                                            <span class="small fw-bold text-dark"><i class="bi bi-star-fill text-warning"></i> 4.9 <span class="text-secondary fw-normal">(12)</span></span>
+                                            <span class="fw-bold text-primary">Rp 100.000</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <h5 class="fw-bold mb-4">Ulasan Terbaru</h5>
+                        
+                        <div class="card-custom p-0 border shadow-sm overflow-hidden">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item p-4">
+                                    <div class="d-flex gap-3">
+                                        <img src="https://ui-avatars.com/api/?name=Andi+Wijaya&background=random" class="rounded-circle" width="45" height="45">
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <h6 class="fw-bold m-0">Andi Wijaya</h6>
+                                                <small class="text-secondary">2 hari lalu</small>
+                                            </div>
+                                            <div class="text-warning small mb-2">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                                <span class="text-dark fw-bold ms-2 small">5.0</span>
+                                            </div>
+                                            <p class="text-secondary small m-0 line-clamp-2">"Sangat puas dengan hasil kerjanya. Mas Budi sangat komunikatif dan pengerjaannya cepat sekali. Revisi juga dilayani dengan baik. Recommended!"</p>
+                                            <div class="mt-3 d-flex gap-2 align-items-center bg-light p-2 rounded" style="width: fit-content;">
+                                                <img src="https://placehold.co/40x30/2563EB/fff" class="rounded border" width="30">
+                                                <small class="text-secondary fw-bold" style="font-size: 0.7rem;">Jasa Landing Page Modern</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item p-4 bg-light bg-opacity-25">
+                                    <div class="d-flex gap-3">
+                                        <img src="https://ui-avatars.com/api/?name=Siti+Nur&background=random" class="rounded-circle" width="45" height="45">
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <h6 class="fw-bold m-0">Siti Nurhaliza</h6>
+                                                <small class="text-secondary">1 minggu lalu</small>
+                                            </div>
+                                            <div class="text-warning small mb-2">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                                                <span class="text-dark fw-bold ms-2 small">4.5</span>
+                                            </div>
+                                            <p class="text-secondary small m-0">"Pengerjaan rapi, codingannya bersih. Cuma sedikit terlambat dari deadline tapi overall oke banget."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center border-top bg-light">
+                                <a href="#" class="text-primary fw-bold small text-decoration-none">Lihat Semua Ulasan (42)</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

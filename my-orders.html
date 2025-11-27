@@ -3,84 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesanan Saya - BeliSkill</title>
+    <title>Pesanan Masuk (Freelancer) - BeliSkill</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .order-card {
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        .order-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            border-color: var(--primary);
+        }
+        .order-header {
+            background-color: #f8fafc;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .status-dot {
+            height: 8px; width: 8px;
+            background-color: currentColor;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+    </style>
 </head>
 <body>
 
     <div class="d-flex">
-        <div class="sidebar d-none d-lg-block">
-            <div class="mb-5 d-flex align-items-center gap-2 px-2">
+        <div class="sidebar d-none d-lg-block position-fixed h-100 start-0 top-0 border-end bg-white" style="width: 260px; z-index: 1000;">
+            <div class="mb-5 d-flex align-items-center gap-2 px-4 py-4">
                 <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
                 <h4 class="fw-bold m-0">BeliSkill</h4>
             </div>
-            <nav class="nav flex-column">
+            <nav class="nav flex-column px-2">
                 <a class="nav-link" href="dashboard.html"><i class="bi bi-grid"></i> Dashboard</a>
                 <a class="nav-link active" href="my-orders.html"><i class="bi bi-briefcase-fill"></i> Pesanan</a>
                 <a class="nav-link" href="my-gigs.html"><i class="bi bi-collection"></i> Gigs Saya</a>
                 <a class="nav-link" href="finance.html"><i class="bi bi-wallet2"></i> Keuangan</a>
                 <a class="nav-link" href="chat.html"><i class="bi bi-chat-dots"></i> Pesan</a>
             </nav>
-
-            <p class="text-secondary small fw-bold mt-5 mb-3 px-2">GENERAL</p>
-        <nav class="nav flex-column">
-            <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
-        </nav>
+            <div class="mt-4 text-secondary small fw-bold px-3 mb-2">GENERAL</div>
+            <nav class="nav flex-column px-2">
+                <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
+                <a class="nav-link text-danger" href="index.html"><i class="bi bi-box-arrow-right"></i> Keluar</a>
+            </nav>
         </div>
 
-        <div class="main-content w-100 bg-light min-vh-100">
-            <div class="p-4">
+        <div class="main-content w-100 bg-light min-vh-100" style="margin-left: 260px;">
+            
+            <header class="bg-white py-3 px-4 shadow-sm border-bottom sticky-top z-3">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="d-flex align-items-center flex-grow-1" style="max-width: 400px;">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0 ps-3 rounded-start-pill"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control bg-light border-start-0 rounded-end-pill" placeholder="Cari ID Pesanan atau Klien...">
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 ms-auto">
+                        <div class="dropdown">
+                            <button class="btn p-0 border-0 d-flex align-items-center gap-3 bg-transparent" type="button" data-bs-toggle="dropdown">
+                                <div class="text-end d-none d-sm-block lh-sm">
+                                    <div class="fw-bold text-dark" style="font-size: 0.9rem;">Budi Santoso</div>
+                                    <small class="text-secondary" style="font-size: 0.75rem;">Freelancer</small>
+                                </div>
+                                <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=2563EB&color=fff" class="rounded-circle border border-2 border-white shadow-sm" width="40">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 mt-2">
+                                <li><a class="dropdown-item" href="profile.html">Profil Publik</a></li>
+                                <li><a class="dropdown-item" href="settings.html">Pengaturan</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="index.html">Keluar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container-fluid px-4 py-4">
+                
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h3 class="fw-bold">Daftar Pesanan</h3>
-                    <div class="btn-group">
-                        <button class="btn btn-white border active">Semua</button>
-                        <button class="btn btn-white border">Aktif</button>
-                        <button class="btn btn-white border">Selesai</button>
+                    <div>
+                        <h3 class="fw-bold m-0">Pesanan Masuk</h3>
+                        <p class="text-secondary m-0 small">Kelola proyek aktif dan permintaan baru.</p>
+                    </div>
+                    <button class="btn btn-white border shadow-sm rounded-pill px-3"><i class="bi bi-download me-2"></i> Export CSV</button>
+                </div>
+
+                <ul class="nav nav-pills mb-4 gap-2 bg-white p-2 rounded-3 shadow-sm d-inline-flex">
+                    <li class="nav-item"><button class="nav-link active rounded-pill fw-bold px-4">Semua</button></li>
+                    <li class="nav-item"><button class="nav-link text-secondary rounded-pill fw-bold px-4">Perlu Respon <span class="badge bg-danger ms-1 rounded-pill">1</span></button></li>
+                    <li class="nav-item"><button class="nav-link text-secondary rounded-pill fw-bold px-4">Sedang Dikerjakan <span class="badge bg-primary ms-1 rounded-pill">2</span></button></li>
+                    <li class="nav-item"><button class="nav-link text-secondary rounded-pill fw-bold px-4">Selesai</button></li>
+                </ul>
+
+                <div class="card order-card rounded-4 mb-4 overflow-hidden shadow-sm border-start border-4 border-danger">
+                    <div class="order-header px-4 py-3 d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="fw-bold text-danger small">#ORD-2025-1001</span>
+                            <span class="text-secondary small border-start ps-3">Baru saja masuk</span>
+                        </div>
+                        <div class="badge bg-danger text-white px-3 py-2 rounded-pill">
+                            <span class="status-dot bg-white"></span> MENUNGGU KONFIRMASI
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-2 mb-3 mb-md-0">
+                                <img src="https://placehold.co/150x100/f59e0b/fff?text=Logo" class="rounded-3 border w-100 object-fit-cover">
+                            </div>
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <h5 class="fw-bold mb-1 text-dark">Desain Logo Minimalis (Paket Basic)</h5>
+                                <p class="text-secondary small mb-2">Klien: <span class="fw-bold text-dark">Warung Kopi Senja</span></p>
+                                <div class="alert alert-warning d-inline-block py-1 px-2 small m-0 border-0">
+                                    <i class="bi bi-exclamation-circle me-1"></i> Batas respon: 23 Jam lagi
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <h4 class="fw-bold text-dark mb-3">Rp 250.000</h4>
+                                <div class="d-flex gap-2 justify-content-md-end">
+                                    <button class="btn btn-outline-danger rounded-pill btn-sm fw-bold px-3">Tolak</button>
+                                    <button class="btn btn-primary rounded-pill btn-sm fw-bold px-4">Terima Pesanan</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card-custom p-4 mb-3 d-flex flex-column flex-md-row gap-4 align-items-center">
-                    <img src="https://placehold.co/150x100/2563EB/fff" class="rounded border" width="120" height="80" style="object-fit: cover;">
-                    
-                    <div class="flex-grow-1">
-                        <div class="d-flex justify-content-between mb-1">
-                            <h6 class="fw-bold m-0 text-primary">#ORD-2025-001</h6>
-                            <span class="badge bg-warning text-dark rounded-pill">IN PROGRESS</span>
+                <div class="card order-card rounded-4 mb-4 overflow-hidden shadow-sm">
+                    <div class="order-header px-4 py-3 d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="fw-bold text-primary small">#ORD-2025-9921</span>
+                            <span class="text-secondary small border-start ps-3">Mulai: 25 Nov 2025</span>
                         </div>
-                        <h5 class="fw-bold mb-2">Buat Landing Page UMKM</h5>
-                        <p class="text-secondary small m-0">Klien: <span class="fw-bold text-dark">PT. Maju Mundur</span> • Deadline: <span class="text-danger fw-bold">28 Nov 2025</span></p>
+                        <div class="badge bg-warning text-dark border border-warning px-3 py-2 rounded-pill">
+                            <span class="status-dot bg-dark"></span> SEDANG DIKERJAKAN
+                        </div>
                     </div>
-
-                    <div class="text-end">
-                        <h5 class="fw-bold text-primary mb-2">Rp 500.000</h5>
-                        <a href="order-view.html" class="btn btn-primary btn-sm rounded-pill px-4 fw-bold">Lihat Detail</a>
+                    <div class="p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-2 mb-3 mb-md-0">
+                                <img src="https://placehold.co/150x100/2563EB/fff?text=Web+Dev" class="rounded-3 border w-100 object-fit-cover">
+                            </div>
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <h5 class="fw-bold mb-1 text-dark">Jasa Pembuatan Landing Page Modern</h5>
+                                <p class="text-secondary small mb-2">Klien: <span class="fw-bold text-dark">PT. Maju Mundur</span></p>
+                                <div class="d-flex align-items-center gap-2 text-danger small fw-bold">
+                                    <i class="bi bi-hourglass-split"></i> Deadline: 2 Hari lagi
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <h4 class="fw-bold text-primary mb-3">Rp 1.500.000</h4>
+                                <div class="d-flex gap-2 justify-content-md-end">
+                                    <a href="chat.html" class="btn btn-outline-secondary rounded-pill btn-sm fw-bold px-3"><i class="bi bi-chat-dots"></i> Chat</a>
+                                    <a href="order-view.html" class="btn btn-primary rounded-pill btn-sm fw-bold px-4">Lihat Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light px-4 py-3 border-top">
+                        <div class="d-flex justify-content-between small mb-1">
+                            <span class="fw-bold text-secondary">Progress Anda</span>
+                            <span class="fw-bold text-primary">60%</span>
+                        </div>
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%"></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card-custom p-4 mb-3 d-flex flex-column flex-md-row gap-4 align-items-center opacity-75">
-                    <img src="https://placehold.co/150x100/10b981/fff" class="rounded border" width="120" height="80" style="object-fit: cover;">
-                    
-                    <div class="flex-grow-1">
-                        <div class="d-flex justify-content-between mb-1">
-                            <h6 class="fw-bold m-0 text-secondary">#ORD-2025-002</h6>
-                            <span class="badge bg-success text-white rounded-pill">COMPLETED</span>
+                <div class="card order-card rounded-4 mb-4 overflow-hidden shadow-sm opacity-75 bg-light">
+                    <div class="order-header px-4 py-3 d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="fw-bold text-secondary small">#ORD-2025-8812</span>
+                            <span class="text-secondary small border-start ps-3">Selesai: 20 Nov 2025</span>
                         </div>
-                        <h5 class="fw-bold mb-2">Desain Logo Coffee Shop</h5>
-                        <p class="text-secondary small m-0">Klien: <span class="fw-bold text-dark">Kopi Senja</span> • Selesai pada: 20 Nov 2025</p>
+                        <div class="badge bg-success text-white px-3 py-2 rounded-pill">
+                            <span class="status-dot bg-white"></span> SELESAI
+                        </div>
                     </div>
-
-                    <div class="text-end">
-                        <h5 class="fw-bold text-dark mb-2">Rp 250.000</h5>
-                        <button class="btn btn-outline-secondary btn-sm rounded-pill px-4 fw-bold">Lihat Invoice</button>
+                    <div class="p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-2 mb-3 mb-md-0">
+                                <img src="https://placehold.co/150x100/10b981/fff?text=Logo+Done" class="rounded-3 border w-100 object-fit-cover grayscale">
+                            </div>
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <h5 class="fw-bold mb-1 text-dark">Redesign Logo Startup Tech</h5>
+                                <p class="text-secondary small mb-2">Klien: <span class="fw-bold text-dark">StartUp Indo</span></p>
+                                <div class="text-success small fw-bold"><i class="bi bi-check-circle-fill"></i> Dana telah cair ke Saldo</div>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <h4 class="fw-bold text-dark mb-3">Rp 750.000</h4>
+                                <div class="d-flex gap-2 justify-content-md-end">
+                                    <button class="btn btn-outline-secondary rounded-pill btn-sm fw-bold px-3">Lihat Ulasan</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="mobile-nav.js"></script>
+    
+    <script>
+        // Simple Interaction for Tabs
+        const navLinks = document.querySelectorAll('.nav-pills .nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => {
+                    l.classList.remove('active', 'bg-primary');
+                    l.classList.add('text-secondary', 'bg-white');
+                });
+                this.classList.add('active', 'bg-primary');
+                this.classList.remove('text-secondary', 'bg-white');
+            });
+        });
+    </script>
 </body>
 </html>
+```

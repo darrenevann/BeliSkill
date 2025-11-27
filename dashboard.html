@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+]<!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,215 +8,269 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Dashboard V3 Styles */
+        .stat-card-v3 {
+            border: 1px solid #f1f5f9;
+            border-radius: 16px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        .stat-card-v3:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-color: var(--primary);
+        }
+        .icon-box {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.25rem;
+        }
+        /* Wallet Widget Mini */
+        .wallet-widget-v3 {
+            background: linear-gradient(135deg, #2563EB 0%, #1e40af 100%);
+            border-radius: 16px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .wallet-widget-v3::after {
+            content: ''; position: absolute;
+            top: -50%; right: -20%; width: 200px; height: 200px;
+            background: rgba(255,255,255,0.1); border-radius: 50%;
+        }
+        /* Order List Item */
+        .priority-item {
+            border: 1px solid #f1f5f9;
+            border-radius: 12px;
+            background: white;
+            transition: all 0.2s;
+        }
+        .priority-item:hover {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
+        }
+        /* Simple CSS Chart Bar */
+        .bar-chart-container { display: flex; align-items: flex-end; gap: 8px; height: 60px; }
+        .bar { width: 8px; background-color: #e2e8f0; border-radius: 4px; transition: height 0.5s; }
+        .bar.active { background-color: var(--primary); }
+    </style>
 </head>
-
 <body>
 
-    <div class="sidebar d-none d-lg-block">
-        <div class="mb-5 d-flex align-items-center gap-2 px-2">
-            <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
-            <h4 class="fw-bold m-0">BeliSkill</h4>
-        </div>
-
-        <p class="text-secondary small fw-bold mb-3 px-2">MENU UTAMA</p>
-        <nav class="nav flex-column">
-            <a class="nav-link active" href="#"><i class="bi bi-grid-fill"></i> Dashboard</a>
-            <a class="nav-link" href="my-orders.html"><i class="bi bi-briefcase"></i> Pesanan <span
-                    class="badge bg-danger ms-auto rounded-pill">2</span></a>
-            <a class="nav-link" href="my-gigs.html"><i class="bi bi-collection"></i> Gigs Saya</a>
-            <a class="nav-link" href="finance.html"><i class="bi bi-wallet2"></i> Keuangan</a>
-            <a class="nav-link" href="chat.html"><i class="bi bi-chat-dots"></i> Pesan</a>
-        </nav>
-
-        <p class="text-secondary small fw-bold mt-5 mb-3 px-2">GENERAL</p>
-        <nav class="nav flex-column">
-            <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
-        </nav>
-    </div>
-
-    <div class="main-content">
-        <header class="bg-white py-3 px-4 shadow-sm border-bottom sticky-top z-3">
-    <div class="d-flex justify-content-between align-items-center w-100">
-        
-        <div class="d-flex align-items-center flex-grow-1" style="max-width: 400px;">
-            <div class="input-group">
-                <span class="input-group-text bg-light border-end-0 text-secondary ps-3 rounded-start-pill">
-                    <i class="bi bi-search"></i>
-                </span>
-                <input type="text" class="form-control bg-light border-start-0 rounded-end-pill" placeholder="Cari pesanan atau gig..." style="box-shadow: none;">
+    <div class="d-flex">
+        <div class="sidebar d-none d-lg-block position-fixed h-100 start-0 top-0 border-end bg-white" style="width: 260px; z-index: 1000;">
+            <div class="mb-5 d-flex align-items-center gap-2 px-4 py-4">
+                <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
+                <h4 class="fw-bold m-0">BeliSkill</h4>
             </div>
+            <nav class="nav flex-column px-2">
+                <a class="nav-link active" href="dashboard.html"><i class="bi bi-grid-fill"></i> Dashboard</a>
+                <a class="nav-link" href="my-orders.html"><i class="bi bi-briefcase"></i> Pesanan <span class="badge bg-danger ms-auto rounded-pill">2</span></a>
+                <a class="nav-link" href="my-gigs.html"><i class="bi bi-collection"></i> Gigs Saya</a>
+                <a class="nav-link" href="finance.html"><i class="bi bi-wallet2"></i> Keuangan</a>
+                <a class="nav-link" href="chat.html"><i class="bi bi-chat-dots"></i> Pesan</a>
+            </nav>
+            <div class="mt-4 text-secondary small fw-bold px-3 mb-2">GENERAL</div>
+            <nav class="nav flex-column px-2">
+                <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
+                <a class="nav-link text-danger" href="index.html"><i class="bi bi-box-arrow-right"></i> Keluar</a>
+            </nav>
         </div>
 
-        <div class="d-flex align-items-center gap-3 ms-auto">
+        <div class="main-content w-100 bg-light min-vh-100" style="margin-left: 260px;">
             
-            <a href="create-gig.html" class="btn btn-primary rounded-pill fw-bold d-none d-md-block shadow-sm">
-                <i class="bi bi-plus-lg me-1"></i> Buat Gig
-            </a>
-
-            <div class="vr mx-2 d-none d-md-block"></div>
-
-            <div class="dropdown">
-                <button class="btn p-0 border-0 d-flex align-items-center gap-3 bg-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="text-end d-none d-sm-block lh-sm">
-                        <div class="fw-bold text-dark" style="font-size: 0.9rem;">Budi Santoso</div>
-                        <small class="text-secondary" style="font-size: 0.75rem;">Freelancer</small>
+            <header class="bg-white py-3 px-4 shadow-sm border-bottom sticky-top z-3">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="d-flex align-items-center flex-grow-1" style="max-width: 400px;">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0 ps-3 rounded-start-pill"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control bg-light border-start-0 rounded-end-pill" placeholder="Cari pesanan atau gig...">
+                        </div>
                     </div>
-                    <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=2563EB&color=fff" alt="Avatar" class="rounded-circle border border-2 border-white shadow-sm" width="40" height="40">
-                </button>
+                    <div class="d-flex align-items-center gap-3 ms-auto">
+                        <a href="create-gig.html" class="btn btn-primary rounded-pill fw-bold d-none d-md-block shadow-sm">
+                            <i class="bi bi-plus-lg me-1"></i> Buat Gig
+                        </a>
+                        <div class="vr mx-2 d-none d-md-block"></div>
+                        <div class="dropdown">
+                            <button class="btn p-0 border-0 d-flex align-items-center gap-3 bg-transparent" type="button" data-bs-toggle="dropdown">
+                                <div class="text-end d-none d-sm-block lh-sm">
+                                    <div class="fw-bold text-dark" style="font-size: 0.9rem;">Budi Santoso</div>
+                                    <small class="text-secondary" style="font-size: 0.75rem;">Freelancer</small>
+                                </div>
+                                <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=2563EB&color=fff" class="rounded-circle border border-2 border-white shadow-sm" width="40">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 mt-2">
+                                <li><a class="dropdown-item" href="profile.html">Profil Publik</a></li>
+                                <li><a class="dropdown-item" href="settings.html">Pengaturan</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="index.html">Keluar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container-fluid px-4 py-4">
                 
-                <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 p-2 mt-3" style="min-width: 220px;">
-                    <li class="px-3 py-2 border-bottom mb-2 d-block d-sm-none">
-                        <span class="fw-bold d-block">Budi Santoso</span>
-                        <small class="text-secondary">budi@email.com</small>
-                    </li>
-                    <li class="mb-1">
-                        <a class="dropdown-item rounded-3 py-2 fw-bold text-secondary d-flex align-items-center gap-2" href="profile.html">
-                            <i class="bi bi-person-badge"></i> Profil Publik
-                        </a>
-                    </li>
-                    <li class="mb-1">
-                        <a class="dropdown-item rounded-3 py-2 fw-bold text-secondary d-flex align-items-center gap-2" href="my-gigs.html">
-                            <i class="bi bi-collection"></i> Kelola Gigs
-                        </a>
-                    </li>
-                    <li class="mb-1">
-                        <a class="dropdown-item rounded-3 py-2 fw-bold text-secondary d-flex align-items-center gap-2" href="#">
-                            <i class="bi bi-gear"></i> Pengaturan
-                        </a>
-                    </li>
-                    <li><hr class="dropdown-divider opacity-50"></li>
-                    <li>
-                        <a class="dropdown-item rounded-3 py-2 fw-bold text-danger d-flex align-items-center gap-2" href="index.html">
-                            <i class="bi bi-box-arrow-right"></i> Keluar
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    </div>
-</header>
-
-        <div class="row g-4 mb-5">
-            <div class="col-md-3" data-aos="flip-up" data-aos-delay="100">
-                <div class="card-custom bg-primary text-white p-4 h-100 position-relative overflow-hidden">
-                    <div class="position-relative z-1">
-                        <p class="opacity-75 mb-1">Total Pesanan</p>
-                        <h2 class="display-5 fw-bold mb-3">24</h2>
-                        <span class="badge bg-white bg-opacity-20 rounded-pill px-3 py-2">
-                            <i class="bi bi-arrow-up-right"></i> +5 bulan ini
-                        </span>
+                <div class="d-flex justify-content-between align-items-end mb-4">
+                    <div>
+                        <h2 class="fw-bold m-0">Halo, Budi! 👋</h2>
+                        <p class="text-secondary m-0">Aktivitas Anda hari ini, Kamis 27 Nov 2025.</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-3" data-aos="flip-up" data-aos-delay="200">
-                <div class="card-custom p-4 h-100">
-                    <div class="d-flex justify-content-between">
-                        <p class="text-secondary mb-1">Pesanan Aktif</p>
-                        <i class="bi bi-arrow-up-right-circle text-success fs-4"></i>
-                    </div>
-                    <h2 class="display-5 fw-bold mb-2">3</h2>
-                    <p class="text-secondary small">Sedang dikerjakan</p>
-                </div>
-            </div>
-
-            <div class="col-md-3" data-aos="flip-up" data-aos-delay="300">
-                <div class="card-custom p-4 h-100">
-                    <div class="d-flex justify-content-between">
-                        <p class="text-secondary mb-1">Pendapatan</p>
-                        <i class="bi bi-wallet-fill text-warning fs-4"></i>
-                    </div>
-                    <h2 class="fw-bold mb-2">Rp 4.5jt</h2>
-                    <p class="text-success small fw-bold">+12% dari bulan lalu</p>
-                </div>
-            </div>
-
-            <div class="col-md-3" data-aos="flip-up" data-aos-delay="400">
-                <div class="card-custom p-4 h-100">
-                    <div class="d-flex justify-content-between">
-                        <p class="text-secondary mb-1">Rating</p>
-                        <i class="bi bi-star-fill text-warning fs-4"></i>
-                    </div>
-                    <h2 class="fw-bold mb-2">4.9</h2>
-                    <p class="text-secondary small">Dari 18 Review</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-lg-8" data-aos="fade-up">
-                <div class="card-custom p-4 h-100">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="fw-bold m-0">Pesanan Masuk</h5>
-                        <a href="#" class="text-decoration-none small fw-bold">Lihat Semua</a>
-                    </div>
-
-                    <div
-                        class="d-flex align-items-center justify-content-between p-3 border-bottom hover-bg-light rounded">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary">
-                                <i class="bi bi-laptop fs-4"></i>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-3" data-aos="fade-up">
+                        <div class="stat-card-v3 p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="icon-box bg-success bg-opacity-10 text-success">
+                                    <i class="bi bi-cash-stack"></i>
+                                </div>
+                                <span class="badge bg-success bg-opacity-10 text-success rounded-pill">+12%</span>
                             </div>
-                            <div>
-                                <h6 class="fw-bold mb-1">Buat Landing Page UMKM</h6>
-                                <p class="text-secondary small m-0">Deadline: 26 Nov 2025 • Client: PT Makmur</p>
-                            </div>
+                            <h3 class="fw-bold mb-1">Rp 4.5jt</h3>
+                            <p class="text-secondary small m-0">Pendapatan Bulan Ini</p>
                         </div>
-                        <span class="badge bg-warning text-dark rounded-pill px-3">Pending</span>
                     </div>
-
-                    <div
-                        class="d-flex align-items-center justify-content-between p-3 border-bottom hover-bg-light rounded mt-2">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success">
-                                <i class="bi bi-palette fs-4"></i>
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-card-v3 p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="icon-box bg-primary bg-opacity-10 text-primary">
+                                    <i class="bi bi-briefcase"></i>
+                                </div>
+                                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill">2 Baru</span>
                             </div>
-                            <div>
-                                <h6 class="fw-bold mb-1">Redesign Logo Startup</h6>
-                                <p class="text-secondary small m-0">Deadline: 28 Nov 2025 • Client: TechIndo</p>
-                            </div>
+                            <h3 class="fw-bold mb-1">3 Proyek</h3>
+                            <p class="text-secondary small m-0">Sedang Dikerjakan</p>
                         </div>
-                        <span class="badge bg-primary rounded-pill px-3">In Progress</span>
                     </div>
-
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-card-v3 p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="icon-box bg-warning bg-opacity-10 text-warning">
+                                    <i class="bi bi-check-circle"></i>
+                                </div>
+                            </div>
+                            <h3 class="fw-bold mb-1">24</h3>
+                            <p class="text-secondary small m-0">Total Pesanan Selesai</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-card-v3 p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="icon-box bg-info bg-opacity-10 text-info">
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <span class="text-secondary small">(18 Review)</span>
+                            </div>
+                            <h3 class="fw-bold mb-1">4.9</h3>
+                            <p class="text-secondary small m-0">Rating Rata-rata</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-lg-4" data-aos="fade-left">
-                <div class="card-custom p-4 h-100 bg-dark text-white" style="background: #1e293b;">
-                    <h5 class="fw-bold mb-4">Aktivitas Terkini</h5>
+                <div class="row g-4">
+                    
+                    <div class="col-lg-8" data-aos="fade-up">
+                        <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="fw-bold m-0">Prioritas Pengerjaan</h5>
+                                <a href="my-orders.html" class="text-decoration-none fw-bold small">Lihat Semua</a>
+                            </div>
 
-                    <div class="d-flex gap-3 mb-4">
-                        <div class="bg-primary rounded-circle p-2"
-                            style="width: 40px; height: 40px; display: grid; place-items: center;">
-                            <i class="bi bi-chat-left-text"></i>
-                        </div>
-                        <div>
-                            <h6 class="fw-bold mb-1">Pesan Baru</h6>
-                            <p class="text-secondary small mb-1">Budi menanyakan detail Gig "Jasa SEO Website".</p>
-                            <a href="#" class="text-primary small text-decoration-none">Balas Sekarang</a>
+                            <div class="priority-item p-3 mb-3">
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <img src="https://placehold.co/50x50/2563EB/fff" class="rounded border">
+                                    <div>
+                                        <h6 class="fw-bold m-0 text-dark">Buat Landing Page UMKM</h6>
+                                        <small class="text-secondary">Klien: PT Makmur</small>
+                                    </div>
+                                    <div class="ms-auto text-end">
+                                        <span class="badge bg-danger bg-opacity-10 text-danger rounded-pill mb-1">URGENT</span>
+                                        <div class="small fw-bold text-danger"><i class="bi bi-clock me-1"></i> 2 Hari lagi</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 mt-2 border-top">
+                                    <small class="text-secondary">Progress: 60%</small>
+                                    <a href="order-view.html" class="btn btn-primary btn-sm rounded-pill px-3 fw-bold">Lanjutkan Kerja</a>
+                                </div>
+                            </div>
+
+                            <div class="priority-item p-3 mb-3">
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <img src="https://placehold.co/50x50/10b981/fff" class="rounded border">
+                                    <div>
+                                        <h6 class="fw-bold m-0 text-dark">Redesign Logo Startup</h6>
+                                        <small class="text-secondary">Klien: TechIndo</small>
+                                    </div>
+                                    <div class="ms-auto text-end">
+                                        <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill mb-1">ON TRACK</span>
+                                        <div class="small text-secondary">5 Hari lagi</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 mt-2 border-top">
+                                    <small class="text-secondary">Progress: 20%</small>
+                                    <a href="order-view.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3 fw-bold">Detail</a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
-                    <div class="d-flex gap-3 mb-4">
-                        <div class="bg-success rounded-circle p-2"
-                            style="width: 40px; height: 40px; display: grid; place-items: center;">
-                            <i class="bi bi-check-lg"></i>
+                    <div class="col-lg-4" data-aos="fade-left">
+                        
+                        <div class="wallet-widget-v3 p-4 mb-4 shadow-lg">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <span class="text-white opacity-75 fw-bold small">SALDO TERSEDIA</span>
+                                <i class="bi bi-wallet2 text-white"></i>
+                            </div>
+                            <h2 class="fw-bold text-white mb-2">Rp 1.250.000</h2>
+                            <div class="d-flex gap-2 mt-4">
+                                <a href="finance.html" class="btn btn-light w-100 fw-bold rounded-pill text-primary btn-sm">Tarik Dana</a>
+                                <button class="btn btn-outline-light w-100 fw-bold rounded-pill btn-sm">Riwayat</button>
+                            </div>
                         </div>
-                        <div>
-                            <h6 class="fw-bold mb-1">Pesanan Selesai</h6>
-                            <p class="text-secondary small mb-1">Dana Rp 500.000 telah masuk ke saldo.</p>
+
+                        <div class="card border-0 shadow-sm rounded-4 p-4">
+                            <h6 class="fw-bold mb-4">Performa Gig (7 Hari)</h6>
+                            
+                            <div class="d-flex justify-content-between align-items-end mb-2">
+                                <div class="bar-chart-container w-100 justify-content-between">
+                                    <div class="bar" style="height: 40%"></div>
+                                    <div class="bar" style="height: 60%"></div>
+                                    <div class="bar" style="height: 30%"></div>
+                                    <div class="bar" style="height: 80%"></div>
+                                    <div class="bar active" style="height: 100%"></div> <div class="bar" style="height: 50%"></div>
+                                    <div class="bar" style="height: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between small text-secondary mt-1">
+                                <span>Sen</span>
+                                <span>Min</span>
+                            </div>
+                            
+                            <div class="mt-4 pt-3 border-top d-flex justify-content-between">
+                                <div>
+                                    <small class="text-secondary d-block">Total Views</small>
+                                    <span class="fw-bold text-dark">1.2k</span>
+                                </div>
+                                <div>
+                                    <small class="text-secondary d-block">Total Klik</small>
+                                    <span class="fw-bold text-dark">450</span>
+                                </div>
+                                <div>
+                                    <small class="text-secondary d-block">Konversi</small>
+                                    <span class="fw-bold text-success">2.4%</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="mt-5 p-3 rounded-3 bg-white bg-opacity-10">
-                        <p class="small text-secondary mb-1">Saldo Tersedia</p>
-                        <h3 class="fw-bold text-white">Rp 1.250.000</h3>
-                        <button class="btn btn-sm btn-light w-100 mt-2 fw-bold">Tarik Dana</button>
                     </div>
-
                 </div>
+
             </div>
         </div>
     </div>
@@ -227,5 +280,4 @@
     <script>AOS.init();</script>
     <script src="mobile-nav.js"></script>
 </body>
-
 </html>

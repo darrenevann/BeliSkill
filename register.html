@@ -8,53 +8,146 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom Register Styles */
+        .auth-sidebar-reg {
+            background: linear-gradient(135deg, #1e40af 0%, #2563EB 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .auth-sidebar-reg::before {
+            content: '';
+            position: absolute;
+            bottom: -10%; left: -10%;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+        .role-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            background: #fff;
+            height: 100%;
+            position: relative;
+        }
+        .role-card:hover {
+            border-color: #cbd5e1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        /* Style saat dipilih */
+        .role-selector input[type="radio"]:checked + .role-card {
+            border-color: var(--primary);
+            background-color: rgba(37, 99, 235, 0.05);
+            color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+        }
+        .role-selector input[type="radio"]:checked + .role-card i {
+            color: var(--primary);
+        }
+        .role-card i {
+            font-size: 2rem;
+            color: #94a3b8;
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.2s;
+        }
+        /* Input Group Fix */
+        .input-group-text {
+            background-color: #f8fafc;
+            border-right: none;
+            color: #94a3b8;
+        }
+        .form-control {
+            border-left: none;
+            background-color: #f8fafc;
+        }
+        .form-control:focus {
+            background-color: #fff;
+            border-color: #e2e8f0;
+            box-shadow: none;
+            border-left: 1px solid var(--primary);
+        }
+        .form-control:focus + .input-group-text {
+            background-color: #fff;
+            border-color: #e2e8f0;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="container-fluid auth-wrapper">
-        <div class="row h-100 min-vh-100 flex-row-reverse">
+    <div class="container-fluid p-0 overflow-hidden">
+        <div class="row g-0 min-vh-100 flex-row-reverse">
             
-            <div class="col-lg-5 auth-sidebar d-none d-lg-flex flex-column justify-content-center p-5">
-                <div class="position-relative z-1" data-aos="fade-left">
-                    <h1 class="display-5 fw-bold mb-4">Wujudkan Ide,<br>Atau Jual Keahlian.</h1>
-                    <p class="lead opacity-75 mb-5">Satu akun untuk akses ke ribuan peluang. Mulai karir digitalmu atau kembangkan bisnismu hari ini.</p>
+            <div class="col-lg-5 auth-sidebar-reg d-none d-lg-flex flex-column justify-content-center p-5 text-white">
+                <div class="position-relative z-1 px-4" data-aos="fade-left" data-aos-duration="1000">
+                    <h1 class="display-5 fw-bold mb-4">Satu Akun,<br>Ribuan Peluang.</h1>
+                    <p class="lead opacity-75 mb-5 fw-light">Mulai karir digitalmu atau kembangkan bisnismu bersama talenta terbaik Indonesia.</p>
                     
-                    <ul class="list-unstyled d-flex flex-column gap-3 text-white opacity-75">
-                        <li class="d-flex gap-3"><i class="bi bi-check-circle-fill text-warning"></i> Gratis biaya pendaftaran</li>
-                        <li class="d-flex gap-3"><i class="bi bi-check-circle-fill text-warning"></i> Akses ke 10+ kategori skill</li>
-                        <li class="d-flex gap-3"><i class="bi bi-check-circle-fill text-warning"></i> Pembayaran aman & terjamin</li>
-                    </ul>
+                    <div class="d-flex flex-column gap-4">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="bg-white bg-opacity-20 p-2 rounded-circle"><i class="bi bi-lightning-charge-fill text-warning"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Proses Cepat</h6>
+                                <small class="opacity-75">Daftar dalam hitungan menit, langsung bisa mulai.</small>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="bg-white bg-opacity-20 p-2 rounded-circle"><i class="bi bi-shield-check-fill text-success"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Transaksi Aman</h6>
+                                <small class="opacity-75">Sistem Escrow menjamin keamanan dana kedua belah pihak.</small>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="bg-white bg-opacity-20 p-2 rounded-circle"><i class="bi bi-people-fill text-info"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Komunitas Terpercaya</h6>
+                                <small class="opacity-75">Bergabung dengan ribuan profesional yang terverifikasi.</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-lg-7 d-flex align-items-center justify-content-center p-4 p-md-5 bg-white">
-                <div class="w-100" style="max-width: 500px;" data-aos="fade-up">
+            <div class="col-lg-7 d-flex align-items-center justify-content-center bg-white p-4">
+                <div class="w-100" style="max-width: 520px;" data-aos="fade-up">
                     
-                    <div class="text-center text-lg-start mb-4">
-                        <h2 class="fw-bold mb-2">Buat Akun Baru 🚀</h2>
+                    <div class="d-lg-none text-center mb-4">
+                        <i class="bi bi-rocket-takeoff-fill text-primary fs-1"></i>
+                    </div>
+
+                    <div class="mb-4">
+                        <h3 class="fw-bold mb-2">Buat Akun Baru 🚀</h3>
                         <p class="text-secondary">Lengkapi data diri untuk bergabung dengan BeliSkill.</p>
                     </div>
 
-                    <form action="login.html"> <div class="mb-4">
+                    <form action="login.html">
+                        
+                        <div class="mb-4">
                             <label class="form-label fw-bold small text-secondary mb-3">SAYA INGIN MENDAFTAR SEBAGAI:</label>
                             <div class="row g-3 role-selector">
                                 <div class="col-6">
-                                    <label class="w-100 h-100">
-                                        <input type="radio" name="role" value="freelancer" checked>
+                                    <label class="w-100 h-100 position-relative">
+                                        <input type="radio" name="role" value="freelancer" checked class="d-none">
                                         <div class="role-card d-flex flex-column justify-content-center align-items-center">
                                             <i class="bi bi-laptop"></i>
-                                            <span class="fw-bold">Freelancer</span>
-                                            <small class="text-secondary" style="font-size: 0.7rem;">Cari Proyek & Uang</small>
+                                            <span class="fw-bold text-dark">Freelancer</span>
+                                            <small class="text-secondary mt-1" style="font-size: 0.75rem;">Saya ingin menawarkan jasa & mencari uang</small>
                                         </div>
                                     </label>
                                 </div>
                                 <div class="col-6">
-                                    <label class="w-100 h-100">
-                                        <input type="radio" name="role" value="client">
+                                    <label class="w-100 h-100 position-relative">
+                                        <input type="radio" name="role" value="client" class="d-none">
                                         <div class="role-card d-flex flex-column justify-content-center align-items-center">
                                             <i class="bi bi-briefcase"></i>
-                                            <span class="fw-bold">Klien</span>
-                                            <small class="text-secondary" style="font-size: 0.7rem;">Cari Jasa & Hire</small>
+                                            <span class="fw-bold text-dark">Klien</span>
+                                            <small class="text-secondary mt-1" style="font-size: 0.75rem;">Saya ingin mencari jasa & merekrut</small>
                                         </div>
                                     </label>
                                 </div>
@@ -63,37 +156,49 @@
 
                         <div class="mb-3">
                             <label class="form-label fw-bold small text-secondary">NAMA LENGKAP</label>
-                            <input type="text" class="form-control form-control-lg" placeholder="John Doe" required>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text rounded-start-3"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control rounded-end-3 fs-6" placeholder="John Doe" required>
+                            </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-bold small text-secondary">ALAMAT EMAIL</label>
-                            <input type="email" class="form-control form-control-lg" placeholder="nama@email.com" required>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text rounded-start-3"><i class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control rounded-end-3 fs-6" placeholder="nama@email.com" required>
+                            </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-bold small text-secondary">PASSWORD</label>
-                                <input type="password" class="form-control form-control-lg" placeholder="Min. 8 karakter" required>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text rounded-start-3"><i class="bi bi-lock"></i></span>
+                                    <input type="password" class="form-control rounded-end-3 fs-6" placeholder="Min. 8 karakter" required>
+                                </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-bold small text-secondary">ULANGI PASSWORD</label>
-                                <input type="password" class="form-control form-control-lg" placeholder="••••••••" required>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text rounded-start-3"><i class="bi bi-lock-fill"></i></span>
+                                    <input type="password" class="form-control rounded-end-3 fs-6" placeholder="••••••••" required>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-check mb-4">
                             <input class="form-check-input" type="checkbox" id="terms" required>
-                            <label class="form-check-label small text-secondary" for="terms">
-                                Saya menyetujui <a href="#" class="text-primary text-decoration-none">Syarat & Ketentuan</a> serta <a href="#" class="text-primary text-decoration-none">Kebijakan Privasi</a>.
+                            <label class="form-check-label small text-secondary pt-1" for="terms">
+                                Saya menyetujui <a href="#" class="text-primary fw-bold text-decoration-none">Syarat & Ketentuan</a> serta <a href="#" class="text-primary fw-bold text-decoration-none">Kebijakan Privasi</a>.
                             </label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 fw-bold mb-4 shadow-lg">Daftar Akun</button>
+                        <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill fw-bold mb-4 shadow-sm btn-lg fs-6">Daftar Akun</button>
 
                     </form>
 
-                    <p class="text-center mt-4 text-secondary">
+                    <p class="text-center mt-2 text-secondary small">
                         Sudah punya akun? <a href="login.html" class="text-primary fw-bold text-decoration-none">Masuk Disini</a>
                     </p>
 
