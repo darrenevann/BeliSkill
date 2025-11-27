@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesanan Saya - BeliSkill</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="d-flex">
+        <div class="sidebar d-none d-lg-block">
+            <div class="mb-5 d-flex align-items-center gap-2 px-2">
+                <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
+                <h4 class="fw-bold m-0">BeliSkill</h4>
+            </div>
+            <nav class="nav flex-column">
+                <a class="nav-link" href="dashboard.html"><i class="bi bi-grid"></i> Dashboard</a>
+                <a class="nav-link active" href="my-orders.html"><i class="bi bi-briefcase-fill"></i> Pesanan</a>
+                <a class="nav-link" href="my-gigs.html"><i class="bi bi-collection"></i> Gigs Saya</a>
+                <a class="nav-link" href="finance.html"><i class="bi bi-wallet2"></i> Keuangan</a>
+                <a class="nav-link" href="chat.html"><i class="bi bi-chat-dots"></i> Pesan</a>
+            </nav>
+
+            <p class="text-secondary small fw-bold mt-5 mb-3 px-2">GENERAL</p>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
+        </nav>
+        </div>
+
+        <div class="main-content w-100 bg-light min-vh-100">
+            <div class="p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="fw-bold">Daftar Pesanan</h3>
+                    <div class="btn-group">
+                        <button class="btn btn-white border active">Semua</button>
+                        <button class="btn btn-white border">Aktif</button>
+                        <button class="btn btn-white border">Selesai</button>
+                    </div>
+                </div>
+
+                <div class="card-custom p-4 mb-3 d-flex flex-column flex-md-row gap-4 align-items-center">
+                    <img src="https://placehold.co/150x100/2563EB/fff" class="rounded border" width="120" height="80" style="object-fit: cover;">
+                    
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between mb-1">
+                            <h6 class="fw-bold m-0 text-primary">#ORD-2025-001</h6>
+                            <span class="badge bg-warning text-dark rounded-pill">IN PROGRESS</span>
+                        </div>
+                        <h5 class="fw-bold mb-2">Buat Landing Page UMKM</h5>
+                        <p class="text-secondary small m-0">Klien: <span class="fw-bold text-dark">PT. Maju Mundur</span> • Deadline: <span class="text-danger fw-bold">28 Nov 2025</span></p>
+                    </div>
+
+                    <div class="text-end">
+                        <h5 class="fw-bold text-primary mb-2">Rp 500.000</h5>
+                        <a href="order-view.html" class="btn btn-primary btn-sm rounded-pill px-4 fw-bold">Lihat Detail</a>
+                    </div>
+                </div>
+
+                <div class="card-custom p-4 mb-3 d-flex flex-column flex-md-row gap-4 align-items-center opacity-75">
+                    <img src="https://placehold.co/150x100/10b981/fff" class="rounded border" width="120" height="80" style="object-fit: cover;">
+                    
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between mb-1">
+                            <h6 class="fw-bold m-0 text-secondary">#ORD-2025-002</h6>
+                            <span class="badge bg-success text-white rounded-pill">COMPLETED</span>
+                        </div>
+                        <h5 class="fw-bold mb-2">Desain Logo Coffee Shop</h5>
+                        <p class="text-secondary small m-0">Klien: <span class="fw-bold text-dark">Kopi Senja</span> • Selesai pada: 20 Nov 2025</p>
+                    </div>
+
+                    <div class="text-end">
+                        <h5 class="fw-bold text-dark mb-2">Rp 250.000</h5>
+                        <button class="btn btn-outline-secondary btn-sm rounded-pill px-4 fw-bold">Lihat Invoice</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="mobile-nav.js"></script>
+</body>
+</html>

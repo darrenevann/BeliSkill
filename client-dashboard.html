@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Klien - BeliSkill</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="d-flex">
+        <div class="sidebar d-none d-lg-block position-fixed h-100 start-0 top-0 border-end bg-white" style="width: 260px; z-index: 1000;">
+            <div class="mb-5 d-flex align-items-center gap-2 px-4 py-4">
+                <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
+                <h4 class="fw-bold m-0">BeliSkill</h4>
+            </div>
+            <nav class="nav flex-column px-2">
+                <a class="nav-link active" href="client-dashboard.html"><i class="bi bi-grid-fill"></i> Dashboard</a>
+                <a class="nav-link" href="client-orders.html"><i class="bi bi-bag-check"></i> Pesanan Saya</a>
+                <a class="nav-link" href="search.html"><i class="bi bi-search"></i> Cari Jasa</a>
+                <a class="nav-link" href="chat.html"><i class="bi bi-chat-dots"></i> Pesan</a>
+                <div class="mt-4 text-secondary small fw-bold px-3 mb-2">AKUN</div>
+                <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
+                <a class="nav-link text-danger" href="index.html"><i class="bi bi-box-arrow-right"></i> Keluar</a>
+            </nav>
+        </div>
+
+        <div class="main-content w-100 bg-light min-vh-100" style="margin-left: 260px;">
+            
+            <header class="bg-white py-3 px-4 shadow-sm border-bottom sticky-top z-3">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="d-flex align-items-center flex-grow-1" style="max-width: 400px;">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0 ps-3 rounded-start-pill"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control bg-light border-start-0 rounded-end-pill" placeholder="Cari jasa freelancer...">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 ms-auto">
+                        <div class="dropdown">
+                            <button class="btn p-0 border-0 d-flex align-items-center gap-3 bg-transparent" type="button" data-bs-toggle="dropdown">
+                                <div class="text-end d-none d-sm-block lh-sm">
+                                    <div class="fw-bold text-dark" style="font-size: 0.9rem;">PT. Maju Jaya</div>
+                                    <small class="text-secondary" style="font-size: 0.75rem;">Client</small>
+                                </div>
+                                <img src="https://ui-avatars.com/api/?name=PT+Maju&background=10b981&color=fff" class="rounded-circle border border-2 border-white shadow-sm" width="40">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 mt-2">
+                                <li><a class="dropdown-item" href="settings.html">Pengaturan</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="index.html">Keluar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container-fluid px-4 py-4">
+                
+                <div class="bg-primary text-white rounded-4 p-5 mb-4 position-relative overflow-hidden shadow-lg">
+                    <div class="position-relative z-1">
+                        <h2 class="fw-bold mb-2">Butuh jasa apa hari ini?</h2>
+                        <p class="opacity-75 mb-4">Ribuan freelancer siap membantu proyek Anda.</p>
+                        <a href="search.html" class="btn btn-light text-primary fw-bold rounded-pill px-4 shadow-sm">Cari Freelancer Sekarang</a>
+                    </div>
+                    <div class="position-absolute end-0 bottom-0 opacity-25">
+                        <i class="bi bi-rocket-takeoff-fill" style="font-size: 15rem; margin-right: -40px; margin-bottom: -40px;"></i>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4">
+                        <div class="card-custom p-4 border-start border-4 border-primary">
+                            <p class="text-secondary small fw-bold mb-1">PESANAN AKTIF</p>
+                            <h2 class="fw-bold m-0">2 Proyek</h2>
+                            <small class="text-primary">Sedang dikerjakan freelancer</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-custom p-4 border-start border-4 border-success">
+                            <p class="text-secondary small fw-bold mb-1">TOTAL PENGELUARAN</p>
+                            <h2 class="fw-bold m-0">Rp 4.5jt</h2>
+                            <small class="text-success">Bulan ini</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-custom p-4 border-start border-4 border-warning">
+                            <p class="text-secondary small fw-bold mb-1">GIG FAVORIT</p>
+                            <h2 class="fw-bold m-0">12</h2>
+                            <small class="text-secondary">Disimpan untuk nanti</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold">Pesanan Berjalan</h5>
+                    <a href="client-orders.html" class="text-decoration-none small fw-bold">Lihat Semua</a>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <div class="card-custom p-4 h-100 border">
+                            <div class="d-flex gap-3 mb-3">
+                                <img src="https://placehold.co/100x100/2563EB/fff" class="rounded" width="80" height="60" style="object-fit: cover;">
+                                <div>
+                                    <h6 class="fw-bold m-0 lh-base">Jasa Pembuatan Landing Page Modern</h6>
+                                    <small class="text-secondary">Freelancer: <a href="#" class="text-primary text-decoration-none">Budi Santoso</a></small>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center bg-light p-3 rounded-3 mb-3">
+                                <span class="badge bg-warning text-dark rounded-pill">IN PROGRESS</span>
+                                <small class="fw-bold text-danger">Deadline: 2 Hari lagi</small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="chat.html" class="btn btn-outline-secondary w-50 fw-bold btn-sm">Chat</a>
+                                <a href="order-view.html" class="btn btn-primary w-50 fw-bold btn-sm">Lihat Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="fw-bold mb-4">Rekomendasi Teratas Untuk Anda</h5>
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="card-custom h-100 border p-0 overflow-hidden">
+                            <img src="https://placehold.co/400x300/1e40af/fff" class="w-100" style="height: 150px; object-fit: cover;">
+                            <div class="p-3">
+                                <h6 class="fw-bold mb-2 small lh-base">Optimasi SEO Website Page One Google</h6>
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                    <span class="text-warning small"><i class="bi bi-star-fill"></i> 4.9</span>
+                                    <span class="fw-bold text-primary small">Rp 750rb</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="mobile-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Akun - BeliSkill</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom Style untuk Upload Foto */
+        .avatar-upload {
+            position: relative;
+            max-width: 150px;
+            margin: auto;
+        }
+        .avatar-edit {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            z-index: 1;
+        }
+        .avatar-edit input {
+            display: none;
+        }
+        .avatar-edit label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.12);
+            transition: all .2s;
+        }
+        .avatar-edit label:hover {
+            background: #1e40af;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d-flex">
+        <div class="sidebar d-none d-lg-block">
+            <div class="mb-5 d-flex align-items-center gap-2 px-2">
+                <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
+                <h4 class="fw-bold m-0">BeliSkill</h4>
+            </div>
+            <nav class="nav flex-column">
+                <a class="nav-link" href="dashboard.html"><i class="bi bi-grid"></i> Dashboard</a>
+                <a class="nav-link" href="my-orders.html"><i class="bi bi-briefcase"></i> Pesanan</a>
+                <a class="nav-link" href="my-gigs.html"><i class="bi bi-collection"></i> Gigs Saya</a>
+                <a class="nav-link" href="finance.html"><i class="bi bi-wallet2"></i> Keuangan</a>
+                <div class="mt-4 text-secondary small fw-bold px-3 mb-2">GENERAL</div>
+                <a class="nav-link active" href="settings.html"><i class="bi bi-gear-fill"></i> Pengaturan</a>
+                <a class="nav-link text-danger" href="index.html"><i class="bi bi-box-arrow-right"></i> Keluar</a>
+            </nav>
+        </div>
+
+        <div class="main-content w-100 bg-light min-vh-100">
+            
+            <header class="bg-white py-3 px-4 shadow-sm border-bottom sticky-top z-3">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <h4 class="fw-bold m-0">Pengaturan Akun</h4>
+                    
+                    <div class="dropdown">
+                        <button class="btn p-0 border-0 d-flex align-items-center gap-3 bg-transparent" type="button" data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=2563EB&color=fff" class="rounded-circle border border-2 border-white shadow-sm" width="40" height="40">
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 mt-2">
+                            <li><a class="dropdown-item" href="profile.html">Profil Publik</a></li>
+                            <li><a class="dropdown-item active" href="settings.html">Pengaturan</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="index.html">Keluar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container-fluid px-4 py-4">
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        
+                        <ul class="nav nav-tabs border-bottom-0 mb-4 gap-2" id="settingTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active border-0 px-4 py-2 rounded-pill fw-bold" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab">Profil Saya</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link border-0 px-4 py-2 rounded-pill fw-bold" id="security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab">Keamanan</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link border-0 px-4 py-2 rounded-pill fw-bold" id="notify-tab" data-bs-toggle="tab" data-bs-target="#notify" type="button" role="tab">Notifikasi</button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="myTabContent">
+
+                            <div class="tab-pane fade show active" id="profile" role="tabpanel">
+                                <div class="card-custom p-5">
+                                    <form>
+                                        <div class="text-center mb-5">
+                                            <div class="avatar-upload">
+                                                <div class="avatar-edit">
+                                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                                    <label for="imageUpload"><i class="bi bi-camera-fill"></i></label>
+                                                </div>
+                                                <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=2563EB&color=fff&size=256" class="rounded-circle shadow-sm border border-4 border-light" width="150" height="150" style="object-fit: cover;">
+                                            </div>
+                                            <p class="text-secondary small mt-3">Klik ikon kamera untuk mengganti foto.</p>
+                                        </div>
+
+                                        <div class="row g-4">
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-bold small text-secondary">NAMA LENGKAP</label>
+                                                <input type="text" class="form-control" value="Budi Santoso">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-bold small text-secondary">TITLE / HEADLINE</label>
+                                                <input type="text" class="form-control" value="Professional Web Developer">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-bold small text-secondary">EMAIL</label>
+                                                <input type="email" class="form-control bg-light" value="budi@email.com" readonly>
+                                                <small class="text-secondary opacity-75">Email tidak dapat diubah.</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-bold small text-secondary">NOMOR TELEPON</label>
+                                                <input type="tel" class="form-control" value="081234567890">
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label fw-bold small text-secondary">BIO / TENTANG SAYA</label>
+                                                <textarea class="form-control" rows="4">Saya adalah full-stack developer dengan pengalaman 5 tahun menangani klien UMKM hingga korporat.</textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-end mt-5 pt-4 border-top">
+                                            <button type="button" class="btn btn-outline-secondary me-2 rounded-pill px-4">Batal</button>
+                                            <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold">Simpan Perubahan</button>
+                                        </div>
+
+                                        <a href="client-dashboard.html" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">Client</a>
+                    <a href="dashboard.html" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">Freelancer</a>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="security" role="tabpanel">
+                                <div class="card-custom p-5 mb-4">
+                                    <h5 class="fw-bold mb-4">Ganti Password</h5>
+                                    <form>
+                                        <div class="mb-3">
+                                            <label class="form-label fw-bold small text-secondary">PASSWORD SAAT INI</label>
+                                            <input type="password" class="form-control">
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-bold small text-secondary">PASSWORD BARU</label>
+                                                <input type="password" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-bold small text-secondary">ULANGI PASSWORD BARU</label>
+                                                <input type="password" class="form-control">
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary rounded-pill px-4 fw-bold">Update Password</button>
+                                    </form>
+                                </div>
+
+                                <div class="card-custom p-4 border border-danger border-opacity-25 bg-danger bg-opacity-10">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="fw-bold text-danger m-0">Hapus Akun</h6>
+                                            <p class="text-secondary small m-0">Tindakan ini permanen dan tidak bisa dibatalkan.</p>
+                                        </div>
+                                        <button class="btn btn-outline-danger btn-sm fw-bold">Hapus Akun Saya</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="notify" role="tabpanel">
+                                <div class="card-custom p-5">
+                                    <h5 class="fw-bold mb-4">Preferensi Email</h5>
+                                    
+                                    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                                        <div>
+                                            <h6 class="fw-bold m-0">Pesanan Baru</h6>
+                                            <small class="text-secondary">Terima email saat ada klien memesan gig Anda.</small>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input fs-4" type="checkbox" checked>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                                        <div>
+                                            <h6 class="fw-bold m-0">Pesan Masuk</h6>
+                                            <small class="text-secondary">Notifikasi email saat ada chat baru.</small>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input fs-4" type="checkbox" checked>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div>
+                                            <h6 class="fw-bold m-0">Info Promo & Update</h6>
+                                            <small class="text-secondary">Berita terbaru dari BeliSkill.</small>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input fs-4" type="checkbox">
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <button class="btn btn-primary rounded-pill px-4 fw-bold">Simpan Preferensi</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Script sederhana untuk preview image saat upload
+        const imageUpload = document.getElementById('imageUpload');
+        const avatarPreview = document.querySelector('.avatar-upload img');
+
+        imageUpload.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    avatarPreview.src = e.target.result;
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
+    <script src="mobile-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Freelancer - BeliSkill</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="sidebar d-none d-lg-block">
+        <div class="mb-5 d-flex align-items-center gap-2 px-2">
+            <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
+            <h4 class="fw-bold m-0">BeliSkill</h4>
+        </div>
+
+        <p class="text-secondary small fw-bold mb-3 px-2">MENU UTAMA</p>
+        <nav class="nav flex-column">
+            <a class="nav-link active" href="#"><i class="bi bi-grid-fill"></i> Dashboard</a>
+            <a class="nav-link" href="my-orders.html"><i class="bi bi-briefcase"></i> Pesanan <span
+                    class="badge bg-danger ms-auto rounded-pill">2</span></a>
+            <a class="nav-link" href="my-gigs.html"><i class="bi bi-collection"></i> Gigs Saya</a>
+            <a class="nav-link" href="finance.html"><i class="bi bi-wallet2"></i> Keuangan</a>
+            <a class="nav-link" href="chat.html"><i class="bi bi-chat-dots"></i> Pesan</a>
+        </nav>
+
+        <p class="text-secondary small fw-bold mt-5 mb-3 px-2">GENERAL</p>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <header class="bg-white py-3 px-4 shadow-sm border-bottom sticky-top z-3">
+    <div class="d-flex justify-content-between align-items-center w-100">
+        
+        <div class="d-flex align-items-center flex-grow-1" style="max-width: 400px;">
+            <div class="input-group">
+                <span class="input-group-text bg-light border-end-0 text-secondary ps-3 rounded-start-pill">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" class="form-control bg-light border-start-0 rounded-end-pill" placeholder="Cari pesanan atau gig..." style="box-shadow: none;">
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 ms-auto">
+            
+            <a href="create-gig.html" class="btn btn-primary rounded-pill fw-bold d-none d-md-block shadow-sm">
+                <i class="bi bi-plus-lg me-1"></i> Buat Gig
+            </a>
+
+            <div class="vr mx-2 d-none d-md-block"></div>
+
+            <div class="dropdown">
+                <button class="btn p-0 border-0 d-flex align-items-center gap-3 bg-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="text-end d-none d-sm-block lh-sm">
+                        <div class="fw-bold text-dark" style="font-size: 0.9rem;">Budi Santoso</div>
+                        <small class="text-secondary" style="font-size: 0.75rem;">Freelancer</small>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=2563EB&color=fff" alt="Avatar" class="rounded-circle border border-2 border-white shadow-sm" width="40" height="40">
+                </button>
+                
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 p-2 mt-3" style="min-width: 220px;">
+                    <li class="px-3 py-2 border-bottom mb-2 d-block d-sm-none">
+                        <span class="fw-bold d-block">Budi Santoso</span>
+                        <small class="text-secondary">budi@email.com</small>
+                    </li>
+                    <li class="mb-1">
+                        <a class="dropdown-item rounded-3 py-2 fw-bold text-secondary d-flex align-items-center gap-2" href="profile.html">
+                            <i class="bi bi-person-badge"></i> Profil Publik
+                        </a>
+                    </li>
+                    <li class="mb-1">
+                        <a class="dropdown-item rounded-3 py-2 fw-bold text-secondary d-flex align-items-center gap-2" href="my-gigs.html">
+                            <i class="bi bi-collection"></i> Kelola Gigs
+                        </a>
+                    </li>
+                    <li class="mb-1">
+                        <a class="dropdown-item rounded-3 py-2 fw-bold text-secondary d-flex align-items-center gap-2" href="#">
+                            <i class="bi bi-gear"></i> Pengaturan
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider opacity-50"></li>
+                    <li>
+                        <a class="dropdown-item rounded-3 py-2 fw-bold text-danger d-flex align-items-center gap-2" href="index.html">
+                            <i class="bi bi-box-arrow-right"></i> Keluar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</header>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-3" data-aos="flip-up" data-aos-delay="100">
+                <div class="card-custom bg-primary text-white p-4 h-100 position-relative overflow-hidden">
+                    <div class="position-relative z-1">
+                        <p class="opacity-75 mb-1">Total Pesanan</p>
+                        <h2 class="display-5 fw-bold mb-3">24</h2>
+                        <span class="badge bg-white bg-opacity-20 rounded-pill px-3 py-2">
+                            <i class="bi bi-arrow-up-right"></i> +5 bulan ini
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" data-aos="flip-up" data-aos-delay="200">
+                <div class="card-custom p-4 h-100">
+                    <div class="d-flex justify-content-between">
+                        <p class="text-secondary mb-1">Pesanan Aktif</p>
+                        <i class="bi bi-arrow-up-right-circle text-success fs-4"></i>
+                    </div>
+                    <h2 class="display-5 fw-bold mb-2">3</h2>
+                    <p class="text-secondary small">Sedang dikerjakan</p>
+                </div>
+            </div>
+
+            <div class="col-md-3" data-aos="flip-up" data-aos-delay="300">
+                <div class="card-custom p-4 h-100">
+                    <div class="d-flex justify-content-between">
+                        <p class="text-secondary mb-1">Pendapatan</p>
+                        <i class="bi bi-wallet-fill text-warning fs-4"></i>
+                    </div>
+                    <h2 class="fw-bold mb-2">Rp 4.5jt</h2>
+                    <p class="text-success small fw-bold">+12% dari bulan lalu</p>
+                </div>
+            </div>
+
+            <div class="col-md-3" data-aos="flip-up" data-aos-delay="400">
+                <div class="card-custom p-4 h-100">
+                    <div class="d-flex justify-content-between">
+                        <p class="text-secondary mb-1">Rating</p>
+                        <i class="bi bi-star-fill text-warning fs-4"></i>
+                    </div>
+                    <h2 class="fw-bold mb-2">4.9</h2>
+                    <p class="text-secondary small">Dari 18 Review</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8" data-aos="fade-up">
+                <div class="card-custom p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold m-0">Pesanan Masuk</h5>
+                        <a href="#" class="text-decoration-none small fw-bold">Lihat Semua</a>
+                    </div>
+
+                    <div
+                        class="d-flex align-items-center justify-content-between p-3 border-bottom hover-bg-light rounded">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary">
+                                <i class="bi bi-laptop fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Buat Landing Page UMKM</h6>
+                                <p class="text-secondary small m-0">Deadline: 26 Nov 2025 • Client: PT Makmur</p>
+                            </div>
+                        </div>
+                        <span class="badge bg-warning text-dark rounded-pill px-3">Pending</span>
+                    </div>
+
+                    <div
+                        class="d-flex align-items-center justify-content-between p-3 border-bottom hover-bg-light rounded mt-2">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success">
+                                <i class="bi bi-palette fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Redesign Logo Startup</h6>
+                                <p class="text-secondary small m-0">Deadline: 28 Nov 2025 • Client: TechIndo</p>
+                            </div>
+                        </div>
+                        <span class="badge bg-primary rounded-pill px-3">In Progress</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4" data-aos="fade-left">
+                <div class="card-custom p-4 h-100 bg-dark text-white" style="background: #1e293b;">
+                    <h5 class="fw-bold mb-4">Aktivitas Terkini</h5>
+
+                    <div class="d-flex gap-3 mb-4">
+                        <div class="bg-primary rounded-circle p-2"
+                            style="width: 40px; height: 40px; display: grid; place-items: center;">
+                            <i class="bi bi-chat-left-text"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Pesan Baru</h6>
+                            <p class="text-secondary small mb-1">Budi menanyakan detail Gig "Jasa SEO Website".</p>
+                            <a href="#" class="text-primary small text-decoration-none">Balas Sekarang</a>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mb-4">
+                        <div class="bg-success rounded-circle p-2"
+                            style="width: 40px; height: 40px; display: grid; place-items: center;">
+                            <i class="bi bi-check-lg"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Pesanan Selesai</h6>
+                            <p class="text-secondary small mb-1">Dana Rp 500.000 telah masuk ke saldo.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 p-3 rounded-3 bg-white bg-opacity-10">
+                        <p class="small text-secondary mb-1">Saldo Tersedia</p>
+                        <h3 class="fw-bold text-white">Rp 1.250.000</h3>
+                        <button class="btn btn-sm btn-light w-100 mt-2 fw-bold">Tarik Dana</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+    <script src="mobile-nav.js"></script>
+</body>
+
+</html>

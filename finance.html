@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keuangan & Saldo - BeliSkill</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style Khusus Kartu Saldo (Gradient) */
+        .wallet-card {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+            color: white;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wallet-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex">
+        <div class="sidebar d-none d-lg-block">
+            <div class="mb-5 d-flex align-items-center gap-2 px-2">
+                <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
+                <h4 class="fw-bold m-0">BeliSkill</h4>
+            </div>
+            <nav class="nav flex-column">
+                <a class="nav-link" href="dashboard.html"><i class="bi bi-grid"></i> Dashboard</a>
+                <a class="nav-link" href="my-orders.html"><i class="bi bi-briefcase"></i> Pesanan</a>
+                <a class="nav-link" href="my-gigs.html"><i class="bi bi-collection"></i> Gigs Saya</a>
+                <a class="nav-link active" href="finance.html"><i class="bi bi-wallet2"></i> Keuangan</a>
+                <a class="nav-link" href="chat.html"><i class="bi bi-chat-dots"></i> Pesan</a>
+            </nav>
+            <p class="text-secondary small fw-bold mt-5 mb-3 px-2">GENERAL</p>
+            <nav class="nav flex-column">
+                <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
+            </nav>
+        </div>
+
+        <div class="main-content w-100 bg-light min-vh-100">
+
+            <header
+                class="bg-white py-3 px-4 shadow-sm border-bottom d-flex justify-content-between align-items-center mb-4 sticky-top">
+                <h4 class="fw-bold m-0">Dompet & Keuangan</h4>
+
+                <div class="dropdown">
+                    <button class="btn p-0 border-0 d-flex align-items-center gap-2 bg-transparent" type="button"
+                        data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=2563EB&color=fff"
+                            class="rounded-circle border border-2 border-white shadow-sm" width="40">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 mt-2">
+                        <li><a class="dropdown-item" href="profile.html">Profil Publik</a></li>
+                        <li><a class="dropdown-item text-danger" href="index.html">Keluar</a></li>
+                    </ul>
+                </div>
+            </header>
+
+            <div class="container-fluid px-4">
+
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-8">
+                        <div class="card-custom wallet-card p-4 mb-4 shadow-lg rounded-4">
+                            <div class="d-flex justify-content-between align-items-start position-relative z-1">
+                                <div>
+                                    <p class="mb-1 opacity-75 small">Saldo Tersedia</p>
+                                    <h1 class="display-4 fw-bold mb-0">Rp 4.250.000</h1>
+                                    <p class="small opacity-75 mt-2"><i class="bi bi-shield-check"></i> Dilindungi oleh
+                                        BeliSkill Guarantee</p>
+                                </div>
+                                <div class="bg-white bg-opacity-20 p-2 rounded-3">
+                                    <i class="bi bi-wallet2 fs-2"></i>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-3 mt-4 position-relative z-1">
+                                <button class="btn btn-light fw-bold px-4 py-2 rounded-pill shadow-sm text-primary"
+                                    data-bs-toggle="modal" data-bs-target="#withdrawModal">
+                                    <i class="bi bi-arrow-down-circle me-2"></i> Tarik Dana
+                                </button>
+                                <button class="btn btn-outline-light fw-bold px-4 py-2 rounded-pill">
+                                    <i class="bi bi-gear me-2"></i> Rekening
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="card-custom p-3 d-flex align-items-center gap-3">
+                                    <div class="bg-warning bg-opacity-10 text-warning p-3 rounded-circle">
+                                        <i class="bi bi-hourglass-split fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="fw-bold m-0">Rp 500.000</h5>
+                                        <small class="text-secondary">Menunggu Pencairan</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-custom p-3 d-flex align-items-center gap-3">
+                                    <div class="bg-success bg-opacity-10 text-success p-3 rounded-circle">
+                                        <i class="bi bi-bank fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="fw-bold m-0">Rp 12.5jt</h5>
+                                        <small class="text-secondary">Total Ditarik</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card-custom p-4 h-100">
+                            <h6 class="fw-bold mb-4">Rekening Bank Terhubung</h6>
+
+                            <div class="p-3 border rounded-3 bg-light mb-3 position-relative overflow-hidden">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="fw-bold text-primary fst-italic">BCA</span>
+                                    <span
+                                        class="badge bg-success bg-opacity-10 text-success rounded-pill px-2">Utama</span>
+                                </div>
+                                <p class="text-secondary small mb-1">BUDI SANTOSO</p>
+                                <h5 class="fw-bold font-monospace m-0">**** **** 8821</h5>
+                            </div>
+
+                            <button class="btn btn-outline-primary border-dashed w-100 py-2 rounded-3 fw-bold small">
+                                + Tambah Rekening Baru
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-custom p-0 mb-5 overflow-hidden">
+                    <div class="p-4 border-bottom d-flex justify-content-between align-items-center">
+                        <h6 class="fw-bold m-0">Riwayat Transaksi</h6>
+                        <button class="btn btn-sm btn-outline-secondary rounded-pill"><i class="bi bi-download"></i>
+                            Export CSV</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light text-secondary small">
+                                <tr>
+                                    <th class="ps-4 py-3">TANGGAL</th>
+                                    <th class="py-3">KETERANGAN</th>
+                                    <th class="py-3">STATUS</th>
+                                    <th class="pe-4 py-3 text-end">JUMLAH</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ps-4 text-secondary small">25 Nov 2025</td>
+                                    <td>
+                                        <span class="fw-bold d-block text-dark small">Pembayaran Order #ORD-9921</span>
+                                        <small class="text-secondary" style="font-size: 0.75rem;">Dari: PT
+                                            Makmur</small>
+                                    </td>
+                                    <td><span
+                                            class="badge bg-success bg-opacity-10 text-success rounded-pill">Berhasil</span>
+                                    </td>
+                                    <td class="pe-4 text-end fw-bold text-success">+ Rp 500.000</td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-4 text-secondary small">20 Nov 2025</td>
+                                    <td>
+                                        <span class="fw-bold d-block text-dark small">Penarikan Dana ke BCA</span>
+                                        <small class="text-secondary" style="font-size: 0.75rem;">ID: TRX-8821</small>
+                                    </td>
+                                    <td><span
+                                            class="badge bg-success bg-opacity-10 text-success rounded-pill">Berhasil</span>
+                                    </td>
+                                    <td class="pe-4 text-end fw-bold text-dark">- Rp 2.500.000</td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-4 text-secondary small">19 Nov 2025</td>
+                                    <td>
+                                        <span class="fw-bold d-block text-dark small">Pembayaran Order #ORD-1120</span>
+                                        <small class="text-secondary" style="font-size: 0.75rem;">Clearance (14
+                                            Hari)</small>
+                                    </td>
+                                    <td><span
+                                            class="badge bg-warning bg-opacity-10 text-warning rounded-pill">Pending</span>
+                                    </td>
+                                    <td class="pe-4 text-end fw-bold text-secondary">Rp 150.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="withdrawModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title fw-bold">Tarik Dana</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-4">
+                    <div class="alert alert-info small mb-3">
+                        <i class="bi bi-info-circle me-1"></i> Biaya admin Rp 2.500 untuk transfer bank.
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-secondary">JUMLAH PENARIKAN</label>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text bg-light border-end-0 fw-bold">Rp</span>
+                            <input type="number" class="form-control border-start-0" placeholder="0">
+                        </div>
+                        <div class="d-flex justify-content-between mt-1">
+                            <small class="text-secondary">Saldo: Rp 4.250.000</small>
+                            <a href="#" class="small text-primary fw-bold text-decoration-none">Tarik Semua</a>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-secondary">TUJUAN</label>
+                        <select class="form-select">
+                            <option>BCA - **** 8821 (Budi Santoso)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm">Konfirmasi Penarikan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="mobile-nav.js"></script>
+</body>
+
+</html>

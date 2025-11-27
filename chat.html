@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan & Diskusi - BeliSkill</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Khusus Chat App */
+        body, html { height: 100%; overflow: hidden; background-color: #f8fafc; }
+        
+        /* Sidebar Global Fix: Pastikan Sidebar tetap di kiri */
+        .sidebar {
+            z-index: 1050; /* Pastikan di atas */
+        }
+
+        /* WRAPPER UTAMA: Ini kuncinya agar tidak tertutup sidebar */
+        .chat-wrapper {
+            margin-left: 260px; /* Geser konten ke kanan sebesar lebar sidebar */
+            height: 100vh;
+            display: flex;
+            width: calc(100% - 260px); /* Sisa lebar layar */
+        }
+
+        /* Responsif: Di layar kecil (Mobile/Tablet), margin hilang karena sidebar hilang */
+        @media (max-width: 991px) {
+            .chat-wrapper {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        /* Layout Kolom Chat */
+        .chat-sidebar-list {
+            width: 350px;
+            border-right: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            height: 100%;
+        }
+
+        .chat-main-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #f8fafc;
+            position: relative;
+            height: 100%;
+        }
+
+        /* Responsive Chat List: Di mobile, jika chat dibuka, list ini mungkin disembunyikan (opsional) */
+        @media (max-width: 768px) {
+            .chat-sidebar-list { width: 80px; } /* Versi Icon saja */
+            .contact-info-text { display: none; }
+        }
+
+        .contact-list { overflow-y: auto; flex: 1; }
+        
+        .contact-item {
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .contact-item:hover { background-color: #f8fafc; }
+        .contact-item.active { background-color: #eff6ff; border-left: 4px solid var(--primary); }
+
+        .message-history {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .msg-bubble {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .msg-in { 
+            background: #fff; 
+            border: 1px solid #e2e8f0;
+            border-bottom-left-radius: 2px;
+            color: #1e293b;
+        }
+
+        .msg-out { 
+            background: var(--primary); 
+            color: white;
+            border-bottom-right-radius: 2px;
+            margin-left: auto;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar d-none d-lg-block position-fixed h-100 start-0 top-0 border-end bg-white" style="width: 260px;">
+        <div class="mb-4 d-flex align-items-center gap-2 px-4 py-4">
+            <i class="bi bi-rocket-takeoff-fill text-primary fs-3"></i>
+            <h4 class="fw-bold m-0">BeliSkill</h4>
+        </div>
+        <nav class="nav flex-column px-2">
+            <a class="nav-link" href="dashboard.html"><i class="bi bi-grid"></i> Dashboard</a>
+            <a class="nav-link" href="my-orders.html"><i class="bi bi-briefcase"></i> Pesanan</a>
+            <a class="nav-link" href="my-gigs.html"><i class="bi bi-collection"></i> Gigs Saya</a>
+            <a class="nav-link" href="finance.html"><i class="bi bi-wallet2"></i> Keuangan</a>
+            <a class="nav-link active" href="chat.html"><i class="bi bi-chat-dots-fill"></i> Pesan <span class="badge bg-danger ms-auto rounded-pill">2</span></a>
+        </nav>
+        <p class="text-secondary small fw-bold mt-5 mb-3 px-2">GENERAL</p>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Pengaturan</a>
+        </nav>
+    </div>
+
+    <div class="chat-wrapper">
+        
+        <div class="chat-sidebar-list bg-white">
+            <div class="p-3 border-bottom d-flex align-items-center justify-content-between">
+                <h5 class="fw-bold m-0 d-none d-md-block">Inbox</h5>
+                <button class="btn btn-light btn-sm rounded-circle"><i class="bi bi-pencil-square"></i></button>
+            </div>
+            <div class="p-2 border-bottom bg-light">
+                <input type="text" class="form-control form-control-sm border-0 bg-white" placeholder="Cari...">
+            </div>
+
+            <div class="contact-list">
+                <div class="contact-item p-3 active d-flex gap-3 align-items-center">
+                    <div class="position-relative">
+                        <img src="https://ui-avatars.com/api/?name=Andi+Pratama&background=random" class="rounded-circle" width="45">
+                        <span class="position-absolute bottom-0 end-0 p-1 bg-success border border-white rounded-circle"></span>
+                    </div>
+                    <div class="flex-grow-1 overflow-hidden contact-info-text">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <h6 class="fw-bold m-0 text-truncate">Andi Pratama</h6>
+                            <small class="text-secondary" style="font-size: 0.7rem;">10:30</small>
+                        </div>
+                        <p class="text-secondary small m-0 text-truncate">Oke siap mas, segera diproses...</p>
+                    </div>
+                </div>
+
+                <div class="contact-item p-3 d-flex gap-3 align-items-center">
+                    <div class="position-relative">
+                        <img src="https://ui-avatars.com/api/?name=PT+Maju&background=random" class="rounded-circle" width="45">
+                    </div>
+                    <div class="flex-grow-1 overflow-hidden contact-info-text">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <h6 class="fw-bold m-0 text-truncate">PT Maju Jaya</h6>
+                            <span class="badge bg-danger rounded-circle p-1" style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">1</span>
+                        </div>
+                        <p class="text-dark fw-bold small m-0 text-truncate">Kapan revisinya selesai?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-main-area">
+            
+            <div class="bg-white p-3 border-bottom d-flex justify-content-between align-items-center shadow-sm z-1">
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-light d-lg-none"><i class="bi bi-arrow-left"></i></button>
+                    
+                    <img src="https://ui-avatars.com/api/?name=Andi+Pratama&background=random" class="rounded-circle" width="40">
+                    <div>
+                        <h6 class="fw-bold m-0 lh-sm">Andi Pratama</h6>
+                        <div class="d-flex align-items-center gap-1">
+                            <small class="text-success" style="font-size: 0.75rem;">● Online</small>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="order-view.html" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold d-none d-md-inline-block">Lihat Order</a>
+                    <button class="btn btn-light btn-sm rounded-circle"><i class="bi bi-three-dots-vertical"></i></button>
+                </div>
+            </div>
+
+            <div class="message-history d-flex flex-column gap-3">
+                
+                <div class="text-center my-2">
+                    <span class="badge bg-light text-secondary border px-3 py-1 rounded-pill small">Hari Ini</span>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <img src="https://ui-avatars.com/api/?name=Andi+Pratama&background=random" class="rounded-circle align-self-end" width="30">
+                    <div class="msg-bubble msg-in">
+                        Halo, saya mau tanya soal revisi logo yang kemarin.
+                        <div class="text-end mt-1 opacity-50" style="font-size: 0.65rem;">10:05</div>
+                    </div>
+                </div>
+
+                <div class="msg-bubble msg-out">
+                    Halo kak! Iya, sudah saya kerjakan. Ini previewnya.
+                    <div class="text-end mt-1 opacity-75" style="font-size: 0.65rem;">10:15 <i class="bi bi-check-all"></i></div>
+                </div>
+
+                <div class="msg-bubble msg-out">
+                    <div class="d-flex align-items-center gap-3 bg-white bg-opacity-20 p-2 rounded mb-2 border border-white border-opacity-25">
+                        <div class="bg-white text-primary p-2 rounded">
+                            <i class="bi bi-file-earmark-image fs-4"></i>
+                        </div>
+                        <div class="text-start">
+                            <div class="fw-bold small">Preview_V1.jpg</div>
+                            <div class="small opacity-75">2.4 MB</div>
+                        </div>
+                    </div>
+                    Silakan dicek dulu kak.
+                    <div class="text-end mt-1 opacity-75" style="font-size: 0.65rem;">10:16 <i class="bi bi-check-all"></i></div>
+                </div>
+            </div>
+
+            <div class="p-3 bg-white border-top">
+                <form action="#" class="d-flex gap-2 align-items-center">
+                    <button type="button" class="btn btn-light text-secondary rounded-circle"><i class="bi bi-paperclip fs-5"></i></button>
+                    <input type="text" class="form-control rounded-pill bg-light border-0 py-2 px-3" placeholder="Ketik pesan..." style="box-shadow: none;">
+                    <button type="submit" class="btn btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                        <i class="bi bi-send-fill"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="mobile-nav.js"></script>
+</body>
+</html>
